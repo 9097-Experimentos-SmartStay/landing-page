@@ -2,6 +2,13 @@
 
 Landing page de **SmartStay**, el producto de la startup **Movildev**: gestión hotelera + IoT para hoteles boutique, alojamientos alternativos y cadenas.
 
+## Enlaces
+
+- **Landing page:** https://smartstay-movildev-landing.vercel.app
+- **API (producción):** https://smartstay-movildev-api.onrender.com · documentación en [https://smartstay-movildev-api.onrender.com/scalar](https://smartstay-movildev-api.onrender.com/scalar)
+- **Frontend web:** https://smartstay-movildev-web.vercel.app
+- **Repositorios:** [backend](https://github.com/9097-Experimentos-SmartStay/backend) · [frontend](https://github.com/9097-Experimentos-SmartStay/frontend) · [landing-page](https://github.com/9097-Experimentos-SmartStay/landing-page) · [mobile](https://github.com/9097-Experimentos-SmartStay/mobile) · [Report](https://github.com/9097-Experimentos-SmartStay/Report)
+
 Cubre las historias de usuario de la épica EP-06 del informe:
 
 | Historia | Qué incluye |
