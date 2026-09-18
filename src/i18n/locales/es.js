@@ -238,6 +238,76 @@ export default {
   contact_email_subject: 'Quiero conocer SmartStay',
   contact_whatsapp_message: 'Hola, quiero información sobre SmartStay para mi hotel.',
 
+  // --- About us (US-28) ---
+  about_title: 'Somos Movildev, el equipo detrás de SmartStay',
+  about_lead:
+    'Transformamos la gestión hotelera con tecnología móvil e IoT: una sola solución para la operación del hotel, el control de las habitaciones y la experiencia del huésped.',
+  about_mission_title: 'Misión',
+  about_mission:
+    'Ayudar a hoteles boutique y pequeños a operar con información en tiempo real y a ofrecer a sus huéspedes una estancia autónoma, cómoda y sin fricciones, con tecnología móvil e IoT accesible.',
+  about_vision_title: 'Visión',
+  about_vision:
+    'Ser la plataforma de referencia en Latinoamérica para hoteles independientes que quieren operar de forma eficiente y sostenible y ofrecer experiencias inteligentes.',
+  about_values_title: 'Nuestros valores',
+  about_value1_title: 'Hospitalidad primero',
+  about_value1_desc: 'La tecnología está al servicio de las personas: huéspedes y equipos.',
+  about_value2_title: 'Innovación con propósito',
+  about_value2_desc: 'Construimos solo lo que resuelve un problema real del hotel.',
+  about_value3_title: 'Transparencia',
+  about_value3_desc: 'Hablamos con datos y distinguimos metas de resultados.',
+  about_value4_title: 'Eficiencia sostenible',
+  about_value4_desc: 'Cada kilovatio y cada minuto ahorrados cuentan.',
+  about_value5_title: 'Colaboración',
+  about_value5_desc: 'Diseñamos junto al personal y los huéspedes, no para ellos.',
+  about_history_title: 'Nuestra historia',
+  about_history1_title: 'Escuchamos al hotel',
+  about_history1_desc:
+    'Nacimos en las aulas de Ingeniería de Software de la UPC, en Lima. Entrevistamos a personal operativo y a huéspedes y encuestamos a equipos de hoteles para entender por qué la operación seguía siendo manual.',
+  about_history2_title: 'Diseñamos SmartStay',
+  about_history2_desc:
+    'Definimos una solución integral: app Android para el personal, app multiplataforma para el huésped, una API RESTful y un gateway IoT de bajo costo.',
+  about_history3_title: 'Construimos por sprints',
+  about_history3_desc:
+    'Desarrollamos la landing, la aplicación web, las apps móviles y los servicios con entregas iterativas y pruebas en cada paso.',
+  about_history4_title: 'Lo que viene',
+  about_history4_desc: 'Pilotos con hoteles para validar nuestras metas de impacto y convertirlas en resultados medidos.',
+  about_team_title: 'Equipo fundador y liderazgo',
+  about_team_lead:
+    'Movildev está liderada por sus cinco cofundadores, estudiantes de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC).',
+  about_team_cofounder: 'Cofundador',
+  about_team_focus_samuel: 'Full stack e inteligencia artificial',
+  about_team_focus_alberto: 'Desarrollo de software con C++ y Java',
+  about_team_focus_italo: 'Full stack y arquitectura de sistemas',
+  about_team_focus_piero: 'Front End y diseño de interfaces',
+  about_team_focus_alejandro: 'Desarrollo web y móvil full stack',
+  about_sustainability_title: 'Compromiso con la sostenibilidad',
+  about_sustainability_lead:
+    'La eficiencia energética es parte del producto, no un añadido: lo que no se mide no se puede reducir.',
+  about_sustainability1_title: 'Energía solo donde se necesita',
+  about_sustainability1_desc:
+    'Monitoreo IoT de temperatura, iluminación y consumo para apagar equipos en habitaciones vacías.',
+  about_sustainability2_title: 'Datos para decidir',
+  about_sustainability2_desc: 'Reportes de consumo para que cada hotel mida y reduzca su huella.',
+  about_sustainability3_title: 'Hardware de bajo costo',
+  about_sustainability3_desc: 'Un gateway IoT que se integra con la infraestructura existente, sin reemplazar equipos.',
+  about_sustainability4_title: 'Menos papel',
+  about_sustainability4_desc: 'Check-in, llaves y comprobantes digitales.',
+  about_credentials_title: 'Certificaciones y reconocimientos',
+  about_credentials_lead:
+    'Todavía no contamos con certificaciones externas. Estos son los estándares que nos comprometemos a alcanzar, y aquí verás su estado real.',
+  about_credential_status_goal: 'Meta',
+  about_credential_status_commitment: 'Compromiso',
+  about_credential_status_in_progress: 'En curso',
+  about_credential1_title: 'ISO/IEC 27001',
+  about_credential1_desc:
+    'Sistema de gestión de seguridad de la información para proteger los datos de hoteles y huéspedes.',
+  about_credential2_title: 'Ley N.º 29733 de Protección de Datos Personales (Perú)',
+  about_credential2_desc: 'Diseñamos el tratamiento de datos personales para cumplirla desde el inicio.',
+  about_credential3_title: 'Accesibilidad WCAG 2.2 AA',
+  about_credential3_desc: 'Nuestras interfaces se construyen y prueban para ser usables por todas las personas.',
+  about_recognitions_note:
+    'Reconocimientos: aún no tenemos premios externos. Los publicaremos aquí cuando los obtengamos.',
+
   // --- Footer ---
   footer_tagline: 'Transformando la hospitalidad con tecnología.',
   footer_product: 'Producto',
