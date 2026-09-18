@@ -1,22 +1,12 @@
 /**
- * US-27 — Builders for the direct sales channels and the scheduling link.
- * Pure functions with no DOM access.
+ * US-27 — Builders for the email channel and the scheduling link.
+ * Pure functions with no DOM access. Phone and WhatsApp are shown as plain
+ * text on purpose (no tel:/wa.me links), so they have no builder.
  */
-
-/** `https://wa.me/<digits>?text=...` — wa.me requires the number without "+" or separators. */
-export function whatsappLink(number, text = '') {
-  const digits = String(number).replace(/\D/g, '');
-  const query = text ? `?text=${encodeURIComponent(text)}` : '';
-  return `https://wa.me/${digits}${query}`;
-}
 
 export function mailtoLink(email, subject = '') {
   const query = subject ? `?subject=${encodeURIComponent(subject)}` : '';
   return `mailto:${email}${query}`;
-}
-
-export function telLink(phone) {
-  return `tel:${String(phone).replace(/[^\d+]/g, '')}`;
 }
 
 /**

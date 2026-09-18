@@ -8,7 +8,7 @@ Cubre las historias de usuario de la épica EP-06 del informe:
 | --- | --- |
 | US-24 Landing segmentada | Selector de perfil (administrador de hotel / huésped) con contenido específico y CTA para solicitar demo, contactar a ventas y descargar la app |
 | US-26 Casos de éxito | Casos con métricas (costos, satisfacción, tiempo), filtro por tipo de alojamiento, espacio para video testimonial y botón "Solicitar más información" |
-| US-27 Demo y contacto | Formulario validado que envía la solicitud a la API, confirmación inmediata, agenda en Cal.com con nombre y correo precargados, y contacto por teléfono, correo y WhatsApp |
+| US-27 Demo y contacto | Formulario validado que envía la solicitud a la API, confirmación inmediata, agenda en Cal.com con nombre y correo precargados, y contacto por correo (enlace `mailto:`), teléfono y WhatsApp (texto plano, sin enlace) |
 | US-28 Información corporativa | Misión, visión, valores, historia, equipo fundador, sostenibilidad y certificaciones (como metas) |
 
 ## Stack
@@ -41,15 +41,17 @@ Toda la configuración vive en `src/config.js` y se puede sobrescribir con varia
 | --- | --- | --- |
 | `VITE_API_BASE_URL` | Base de la API; el formulario hace `POST ${VITE_API_BASE_URL}/demo-requests` | `http://localhost:5192/api/v1` (placeholder) |
 | `VITE_CALCOM_URL` | Evento de Cal.com para agendar la demo | `https://cal.com/piero-sulca-sanchez-rhh1nt/demo-smartstay` |
-| `VITE_WHATSAPP_NUMBER` | WhatsApp de ventas, solo dígitos con código de país | `51900000000` (placeholder) |
-| `VITE_SALES_EMAIL` | Correo de ventas | `ventas@smartstay.example` (placeholder) |
-| `VITE_SALES_PHONE` | Teléfono de ventas | `+51 900 000 000` (placeholder) |
+| `VITE_SALES_EMAIL` | Correo de ventas; se muestra como enlace `mailto:` | `ventas@smartstay.pe` (ficticio) |
+| `VITE_SALES_PHONE` | Teléfono de ventas; se muestra como texto plano, sin enlace `tel:` | `+51 947 318 265` (ficticio) |
+| `VITE_WHATSAPP_NUMBER` | WhatsApp de ventas; se muestra como texto plano, sin enlace `wa.me` | `+51 962 574 813` (ficticio) |
 | `VITE_WEB_APP_URL` | App web para iniciar sesión y crear cuenta | `https://smartstay-3cffc.web.app` |
 | `VITE_APP_DOWNLOAD_URL` | Enlace de descarga de la app; si está vacío se muestra "Próximamente" | vacío |
 | `VITE_TESTIMONIAL_VIDEO_URL` | URL *embed* del video testimonial; si está vacía se muestra un espacio reservado | vacío |
 | `VITE_PRODUCT_VIDEO_URL` | URL *embed* del video del producto; si está vacía la sección se oculta | vacío |
 
-Si algún valor sigue siendo un placeholder, la consola del navegador lo indica al cargar la página.
+Los números de teléfono y WhatsApp aceptan cualquier separador, con o sin `+51`, y se muestran con formato peruano `+51 9XX XXX XXX`. Se muestran sin enlace a propósito: los valores por defecto son ficticios y nadie termina escribiendo o llamando a un número real.
+
+Si `VITE_API_BASE_URL` sigue siendo el placeholder, la consola del navegador lo indica al cargar la página.
 
 ### Contrato de la API (US-27)
 
@@ -73,7 +75,7 @@ Si algún valor sigue siendo un placeholder, la consola del navegador lo indica 
 
 - `201`: `{ "id", "status": "Received", "message" }`. La landing muestra la confirmación y abre el calendario.
 - `400`: ProblemDetails con `errors` por campo (en camelCase). Cada error aparece bajo su campo.
-- `429`, `5xx` o sin conexión: mensaje para reintentar y enlaces directos a WhatsApp y correo. Los datos del formulario se conservan.
+- `429`, `5xx` o sin conexión: mensaje para reintentar con el número de WhatsApp (texto plano) y el enlace al correo de ventas. Los datos del formulario se conservan.
 
 `phone` y `message` se omiten cuando están vacíos. El seguimiento automático (escenario 4 de US-27) lo hace el backend.
 

@@ -217,7 +217,7 @@ export default {
   demo_error_rate_limited: 'We received too many requests from your connection. Wait a few minutes and try again.',
   demo_error_unavailable:
     'We could not send your request. Your details are still in the form: try again in a few seconds or contact us directly.',
-  demo_error_contact_whatsapp: 'Message us on WhatsApp',
+  demo_error_contact_whatsapp: 'WhatsApp: {number}',
   demo_success_badge: 'Request sent',
   demo_success_title: 'Thank you, {firstName}!',
   demo_success_detail: 'We sent a confirmation email to {email}.',
@@ -233,9 +233,7 @@ export default {
   contact_lead: 'Our sales team will answer through the channel you prefer.',
   contact_phone: 'Phone',
   contact_email: 'Email',
-  contact_whatsapp_cta: 'Message us',
   contact_email_subject: 'I want to learn about SmartStay',
-  contact_whatsapp_message: 'Hi, I would like information about SmartStay for my hotel.',
 
   // --- About us (US-28) ---
   about_title: "We are Movildev, the team behind SmartStay",

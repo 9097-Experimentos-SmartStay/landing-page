@@ -102,20 +102,18 @@ export function initDemoForm() {
     if (!isValidation) {
       // Offer the direct channels so the lead is not lost while the API is down.
       const channels = contactChannels();
+      // WhatsApp is plain text on purpose (no wa.me link); only the email is a link.
       const links = document.createElement('p');
       links.className = 'mt-2 flex flex-wrap gap-x-4 gap-y-1 font-semibold';
-      for (const [name, channel] of Object.entries({ whatsapp: channels.whatsapp, email: channels.email })) {
-        const link = document.createElement('a');
-        link.href = channel.href;
-        link.className = 'underline';
-        link.dataset.alertContact = name;
-        link.textContent = name === 'whatsapp' ? t('demo_error_contact_whatsapp') : channel.label;
-        if (name === 'whatsapp') {
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-        }
-        links.append(link);
-      }
+      const whatsapp = document.createElement('span');
+      whatsapp.dataset.alertContact = 'whatsapp';
+      whatsapp.textContent = t('demo_error_contact_whatsapp', { number: channels.whatsapp.label });
+      const email = document.createElement('a');
+      email.href = channels.email.href;
+      email.className = 'underline';
+      email.dataset.alertContact = 'email';
+      email.textContent = channels.email.label;
+      links.append(whatsapp, email);
       alertBox.append(links);
     }
   }
