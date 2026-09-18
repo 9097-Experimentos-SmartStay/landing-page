@@ -10,7 +10,6 @@
 /** Fallback values. They are intentionally fake: replace them via env vars. */
 export const PLACEHOLDERS = Object.freeze({
   API_BASE_URL: 'http://localhost:5192/api/v1',
-  CALCOM_URL: 'https://cal.com/smartstay-placeholder/demo',
   WHATSAPP_NUMBER: '51900000000',
   SALES_EMAIL: 'ventas@smartstay.example',
   SALES_PHONE: '+51 900 000 000',
@@ -18,11 +17,16 @@ export const PLACEHOLDERS = Object.freeze({
 
 const DEFAULTS = Object.freeze({
   ...PLACEHOLDERS,
+  // Real Cal.com event "Demo SmartStay" (30 min).
+  CALCOM_URL: 'https://cal.com/piero-sulca-sanchez-rhh1nt/demo-smartstay',
   WEB_APP_URL: 'https://smartstay-3cffc.web.app',
   APP_DOWNLOAD_URL: '',
   TESTIMONIAL_VIDEO_URL: '',
   PRODUCT_VIDEO_URL: '',
 });
+
+// Keys that can never be blank (an empty env var falls back to the default).
+const REQUIRED_KEYS = new Set([...Object.keys(PLACEHOLDERS), 'CALCOM_URL', 'WEB_APP_URL']);
 
 const readString = (env, key) => {
   const value = env[`VITE_${key}`];
@@ -33,7 +37,7 @@ const withoutTrailingSlash = (url) => url.replace(/\/+$/, '');
 
 /**
  * Builds the configuration object from an env map (e.g. `import.meta.env`).
- * Exported for unit tests; the app uses the `config` singleton below.
+ * Exported so it can be reused with any env map; the app uses the `config` singleton below.
  *
  * @param {Record<string, string | undefined>} env
  */
@@ -42,7 +46,7 @@ export function createConfig(env = {}) {
     const value = readString(env, key);
     // Required keys fall back when empty; optional ones may be explicitly blank.
     if (value === undefined) return DEFAULTS[key];
-    if (value === '' && key in PLACEHOLDERS) return DEFAULTS[key];
+    if (value === '' && REQUIRED_KEYS.has(key)) return DEFAULTS[key];
     return value;
   };
 
