@@ -28,7 +28,7 @@ const DEFAULTS = Object.freeze({
   ...CONTACT_DEFAULTS,
   // Real Cal.com event "Demo SmartStay" (30 min).
   CALCOM_URL: 'https://cal.com/piero-sulca-sanchez-rhh1nt/demo-smartstay',
-  WEB_APP_URL: 'https://smartstay-3cffc.web.app',
+  WEB_APP_URL: 'https://smartstay-movildev-web.vercel.app',
   APP_DOWNLOAD_URL: '',
   TESTIMONIAL_VIDEO_URL: '',
   PRODUCT_VIDEO_URL: '',

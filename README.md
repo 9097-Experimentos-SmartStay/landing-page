@@ -44,7 +44,7 @@ Toda la configuración vive en `src/config.js` y se puede sobrescribir con varia
 | `VITE_SALES_EMAIL` | Correo de ventas; se muestra como enlace `mailto:` | `ventas@smartstay.pe` (ficticio) |
 | `VITE_SALES_PHONE` | Teléfono de ventas; se muestra como texto plano, sin enlace `tel:` | `+51 947 318 265` (ficticio) |
 | `VITE_WHATSAPP_NUMBER` | WhatsApp de ventas; se muestra como texto plano, sin enlace `wa.me` | `+51 962 574 813` (ficticio) |
-| `VITE_WEB_APP_URL` | App web para iniciar sesión y crear cuenta | `https://smartstay-3cffc.web.app` |
+| `VITE_WEB_APP_URL` | App web para iniciar sesión y crear cuenta | `https://smartstay-movildev-web.vercel.app` |
 | `VITE_APP_DOWNLOAD_URL` | Enlace de descarga de la app; si está vacío se muestra "Próximamente" | vacío |
 | `VITE_TESTIMONIAL_VIDEO_URL` | URL *embed* del video testimonial; si está vacía se muestra un espacio reservado | vacío |
 | `VITE_PRODUCT_VIDEO_URL` | URL *embed* del video del producto; si está vacía la sección se oculta | vacío |
