@@ -33,6 +33,58 @@ export default {
   hero_subtitle:
     'An intelligent ecosystem that streamlines your hotel operations and transforms the guest experience.',
 
+  // --- Profile segmentation (US-24) ---
+  profile_question: 'How would you like to explore SmartStay?',
+  profile_choice_admin: 'I manage a hotel',
+  profile_choice_admin_hint: 'Operational benefits, ROI and demo',
+  profile_choice_guest: "I'm a guest",
+  profile_choice_guest_hint: 'Comfort, experience and technology',
+  profile_title: 'SmartStay for your profile',
+  profile_tablist_label: 'Profile',
+  profile_tab_admin: 'Hotel administrator',
+  profile_tab_guest: 'Guest',
+  admin_benefits_title: 'Operational benefits',
+  admin_benefits_lead:
+    'Your team no longer depends on fixed terminals and manual processes: the whole hotel, in real time, from a phone.',
+  admin_benefit1_title: 'Rooms in real time',
+  admin_benefit1_desc: 'Instantly see which rooms are free, occupied, being cleaned or under maintenance.',
+  admin_benefit2_title: 'Staff tasks',
+  admin_benefit2_desc: 'Assign housekeeping, maintenance and front desk tasks from your phone, with real-time notifications.',
+  admin_benefit3_title: 'Digital check-in and access',
+  admin_benefit3_desc: 'Automatic registration and mobile room access, with no queues at the front desk.',
+  admin_benefit4_title: 'Energy under control',
+  admin_benefit4_desc: 'Monitor temperature, lighting and consumption in every room with IoT sensors.',
+  admin_roi_title: 'Return on investment (ROI)',
+  admin_roi_lead:
+    'Less operational time and lower energy use, without investing in traditional POS/PMS systems: SmartStay runs on a low-cost IoT gateway.',
+  admin_roi_checkin_label: 'Average check-in time',
+  admin_roi_productivity_label: 'Housekeeping and task assignment productivity',
+  admin_roi_satisfaction_label: 'Guest satisfaction',
+  admin_roi_disclaimer:
+    'Impact targets defined in our user research (Lean UX hypotheses). We validate them through pilots; actual results depend on each hotel.',
+  admin_stories_title: 'Success stories',
+  admin_stories_desc: 'See how SmartStay applies to boutique hotels, alternative lodging and chains.',
+  admin_stories_cta: 'See success stories',
+  cta_group_title_admin: 'Ready for the next step?',
+  cta_group_title_guest: 'Take SmartStay with you',
+  cta_contact_sales: 'Contact sales',
+  cta_download_app: 'Download the app',
+  cta_guest_recommend_demo: 'Own a hotel? Request a demo',
+  app_coming_soon:
+    'Coming soon: the SmartStay guest app will be available on Android and iOS. Meanwhile, ask your hotel whether it already uses SmartStay.',
+  guest_title: 'Your stay, from your phone',
+  guest_lead:
+    'At hotels that use SmartStay you control your room and talk to the hotel without queues or phone calls.',
+  guest_comfort_title: 'Comfort',
+  guest_comfort_item1: 'Adjust your room temperature and lighting from the app.',
+  guest_comfort_item2: 'Schedule housekeeping whenever it suits you.',
+  guest_experience_title: 'Experience',
+  guest_experience_item1: 'Digital check-in: arrive and go straight to your room.',
+  guest_experience_item2: 'Order room service and make requests without calling the front desk.',
+  guest_technology_title: 'Technology',
+  guest_technology_item1: 'Digital key on your phone.',
+  guest_technology_item2: 'Real-time notifications from the hotel.',
+
   // --- Products & solutions ---
   products_eyebrow: 'Product',
   products_title: 'Technology that transforms hotel management',
