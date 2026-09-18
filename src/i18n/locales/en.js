@@ -271,7 +271,11 @@ export default {
   about_team_title: 'Founding team and leadership',
   about_team_lead:
     'Movildev is led by its five co-founders, Software Engineering students at Universidad Peruana de Ciencias Aplicadas (UPC).',
-  about_team_cofounder: 'Co-founder',
+  about_team_role_samuel: 'Full Stack Developer & AI',
+  about_team_role_alberto: 'QA & Testing',
+  about_team_role_italo: 'Project Lead & Architect',
+  about_team_role_piero: 'Frontend Developer',
+  about_team_role_alejandro: 'Backend Developer',
   about_team_focus_samuel: 'Full stack and artificial intelligence',
   about_team_focus_alberto: 'Software development with C++ and Java',
   about_team_focus_italo: 'Full stack and systems architecture',
