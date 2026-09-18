@@ -1,1171 +1,1079 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Stay | The Revolution in Hotel Management + IoT</title>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartStay | Gestión hotelera + IoT</title>
+    <meta
+      name="description"
+      content="SmartStay integra la operación del hotel y la experiencia del huésped con tecnología móvil e IoT."
+    />
+    <meta name="theme-color" content="#2c3e91" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap"
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-brand-blue"
+      data-i18n="a11y_skip_link"
+      >Saltar al contenido</a
+    >
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body class="bg-white font-body text-gray-800">
-
-<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[--primary-blue] shadow-lg">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" onclick="showView('home-view')" class="flex items-center text-white text-2xl font-brand font-bold">
-            <img src="assets/img/logo.png" alt="Smart Stay Logo" class="h-8 mr-2"/>
-            SMART STAY
+    <!-- ============ HEADER ============ -->
+    <header class="sticky top-0 z-50 bg-brand-blue text-white shadow-lg">
+      <nav
+        class="container-page flex h-16 items-center justify-between gap-3"
+        aria-label="Principal"
+        data-i18n-attr="aria-label:nav_aria_label"
+      >
+        <a href="#top" class="flex shrink-0 items-center gap-2 font-brand text-lg font-bold tracking-wide">
+          <span class="rounded-lg bg-white p-1">
+            <img src="./src/assets/logo.webp" alt="" width="28" height="28" class="h-7 w-7" />
+          </span>
+          SMART STAY
         </a>
-        <div class="hidden md:flex items-center space-x-1">
-            <a href="#" onclick="showView('products-view')" class="nav-link text-white transition-colors py-2 px-3 rounded-md" data-key="nav_products">Products</a>
-            <a href="#" onclick="showView('solutions-view')" class="nav-link text-white transition-colors py-2 px-3 rounded-md" data-key="nav_solutions">Solutions</a>
-            <a href="#" onclick="showView('pricing-view')" class="nav-link text-white transition-colors py-2 px-3 rounded-md" data-key="nav_pricing">Pricing</a>
-            <a href="#" onclick="showView('success-stories-view')" class="nav-link text-white transition-colors py-2 px-3 rounded-md" data-key="nav_success">Success Stories</a>
-            <a href="#" onclick="showView('resources-view')" class="nav-link text-white transition-colors py-2 px-3 rounded-md" data-key="nav_resources">Resources</a>
-        </div>
-        <div class="flex items-center space-x-4">
-            <div class="lang-switcher relative">
-                <button type="button" id="lang-toggle-btn" class="flex items-center text-white p-2 rounded-md hover:bg-white/20 transition-colors">
-                    <i data-lucide="globe" class="w-5 h-5 mr-1"></i>
-                    <span id="current-lang-display">EN</span>
-                    <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
-                </button>
-                <div id="lang-dropdown" class="dropdown right-0 mt-2 py-2 w-24 bg-white rounded-md shadow-lg hidden">
-                    <a href="#" id="lang-en-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a>
-                    <a href="#" id="lang-es-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Spanish</a>
-                </div>
-            </div>
-            <a href="#" class="text-white hidden sm:block font-semibold py-2 px-4 rounded-full hover:bg-white/20 transition-colors" data-key="nav_login"onclick="window.location.href='https://smartstay-3cffc.web.app/login'">Login</a>
-            <a href="#" class="bg-white text-[--primary-blue] font-bold py-2 px-5 rounded-full hover:bg-gray-200 transition-colors shadow-md" data-key="nav_register" onclick="window.location.href='https://smartstay-3cffc.web.app/register'">Register</a>
-        </div>
-    </nav>
-</header>
 
-<main>
-    <section id="home-view" class="page-view">
-        <div class="hero-section h-screen flex items-center justify-center text-white text-center">
-            <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-6xl font-brand font-bold leading-tight mb-4" data-key="hero_title">Hotel Management + IoT: The Perfect Synergy</h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300" data-key="hero_subtitle">
-                    Unleash your hotel's potential with an intelligent ecosystem that optimizes operations and revolutionizes the guest experience.
+        <ul class="hidden items-center gap-1 lg:flex">
+          <li><a href="#profile" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_for_you">Para ti</a></li>
+          <li><a href="#products" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_products">Producto</a></li>
+          <li><a href="#success-stories" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_success">Casos de éxito</a></li>
+          <li><a href="#pricing" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_pricing">Precios</a></li>
+          <li><a href="#about" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_about">Nosotros</a></li>
+          <li><a href="#contact" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_contact">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <div
+            class="flex rounded-full bg-white/10 p-0.5 text-sm font-semibold"
+            role="group"
+            aria-label="Idioma"
+            data-i18n-attr="aria-label:lang_group_label"
+          >
+            <button
+              type="button"
+              class="min-h-9 min-w-9 rounded-full px-2 aria-pressed:bg-white aria-pressed:text-brand-blue"
+              data-lang="es"
+              aria-pressed="true"
+              lang="es"
+              aria-label="Español"
+            >
+              ES
+            </button>
+            <button
+              type="button"
+              class="min-h-9 min-w-9 rounded-full px-2 aria-pressed:bg-white aria-pressed:text-brand-blue"
+              data-lang="en"
+              aria-pressed="false"
+              lang="en"
+              aria-label="English"
+            >
+              EN
+            </button>
+          </div>
+          <a
+            href="https://smartstay-3cffc.web.app/login"
+            class="hidden rounded-full px-3 py-2 font-semibold hover:bg-white/15 lg:inline-flex"
+            data-app-link="login"
+            data-i18n="nav_login"
+            >Iniciar sesión</a
+          >
+          <a href="#demo" class="btn btn-primary hidden sm:inline-flex" data-i18n="cta_request_demo">Solicitar demo</a>
+          <button
+            type="button"
+            id="menu-toggle"
+            class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md hover:bg-white/15 lg:hidden"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Abrir menú"
+            data-i18n-attr="aria-label:nav_open_menu"
+          >
+            <i data-lucide="menu" class="h-6 w-6"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" class="border-t border-white/15 lg:hidden" hidden>
+        <ul class="container-page flex flex-col py-2 text-base">
+          <li><a href="#profile" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_for_you">Para ti</a></li>
+          <li><a href="#products" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_products">Producto</a></li>
+          <li><a href="#success-stories" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_success">Casos de éxito</a></li>
+          <li><a href="#pricing" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_pricing">Precios</a></li>
+          <li><a href="#about" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_about">Nosotros</a></li>
+          <li><a href="#contact" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_contact">Contacto</a></li>
+          <li class="mt-2 flex flex-wrap gap-2 border-t border-white/15 pt-3">
+            <a href="#demo" class="btn btn-primary flex-1" data-i18n="cta_request_demo">Solicitar demo</a>
+            <a
+              href="https://smartstay-3cffc.web.app/login"
+              class="btn btn-ghost-light flex-1"
+              data-app-link="login"
+              data-i18n="nav_login"
+              >Iniciar sesión</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section id="top" class="hero-bg text-white">
+        <div class="container-page py-16 text-center md:py-28">
+          <h1 class="mx-auto max-w-4xl text-3xl leading-tight font-bold sm:text-4xl md:text-6xl" data-i18n="hero_title">
+            Gestión hotelera + IoT: la sinergia perfecta
+          </h1>
+          <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-200 md:text-xl" data-i18n="hero_subtitle">
+            Un ecosistema inteligente que optimiza la operación de tu hotel y transforma la experiencia de tus huéspedes.
+          </p>
+          <h2 id="profile-question" class="mt-10 text-lg font-semibold md:text-xl" data-i18n="profile_question">
+            ¿Cómo quieres conocer SmartStay?
+          </h2>
+          <div class="mx-auto mt-4 grid max-w-2xl gap-3 sm:grid-cols-2" role="group" aria-labelledby="profile-question">
+            <button
+              type="button"
+              class="flex min-h-20 items-center gap-4 rounded-2xl bg-white p-4 text-left text-slate-800 shadow-lg ring-brand-orange transition hover:ring-4"
+              data-profile-choice="admin"
+            >
+              <i data-lucide="building-2" class="h-10 w-10 shrink-0 text-brand-blue"></i>
+              <span>
+                <span class="block font-brand text-lg font-bold text-brand-blue" data-i18n="profile_choice_admin">Administro un hotel</span>
+                <span class="block text-sm text-slate-600" data-i18n="profile_choice_admin_hint">Beneficios operativos, ROI y demo</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="flex min-h-20 items-center gap-4 rounded-2xl bg-white p-4 text-left text-slate-800 shadow-lg ring-brand-orange transition hover:ring-4"
+              data-profile-choice="guest"
+            >
+              <i data-lucide="luggage" class="h-10 w-10 shrink-0 text-brand-green-strong"></i>
+              <span>
+                <span class="block font-brand text-lg font-bold text-brand-blue" data-i18n="profile_choice_guest">Soy huésped</span>
+                <span class="block text-sm text-slate-600" data-i18n="profile_choice_guest_hint">Confort, experiencia y tecnología</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE (US-24) ============ -->
+      <section id="profile" class="section bg-slate-50" aria-labelledby="profile-title">
+        <div class="container-page">
+          <p class="section-eyebrow" data-i18n="nav_for_you">Para ti</p>
+          <h2 id="profile-title" class="section-title" data-i18n="profile_title">SmartStay según tu perfil</h2>
+
+          <div
+            class="mt-6 inline-flex w-full rounded-full bg-white p-1 shadow-sm ring-1 ring-slate-200 sm:w-auto"
+            role="tablist"
+            aria-label="Perfil"
+            data-i18n-attr="aria-label:profile_tablist_label"
+          >
+            <button
+              type="button"
+              role="tab"
+              id="profile-tab-admin"
+              aria-controls="profile-panel-admin"
+              aria-selected="true"
+              class="min-h-11 flex-1 rounded-full px-3 text-sm font-semibold sm:px-4 sm:text-base text-slate-600 aria-selected:bg-brand-blue aria-selected:text-white sm:flex-none"
+              data-profile-tab="admin"
+              data-i18n="profile_tab_admin"
+            >
+              Administrador de hotel
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="profile-tab-guest"
+              aria-controls="profile-panel-guest"
+              aria-selected="false"
+              tabindex="-1"
+              class="min-h-11 flex-1 rounded-full px-3 text-sm font-semibold sm:px-4 sm:text-base text-slate-600 aria-selected:bg-brand-blue aria-selected:text-white sm:flex-none"
+              data-profile-tab="guest"
+              data-i18n="profile_tab_guest"
+            >
+              Huésped
+            </button>
+          </div>
+
+          <!-- Administrator panel -->
+          <div id="profile-panel-admin" role="tabpanel" aria-labelledby="profile-tab-admin" class="mt-8" data-profile-panel="admin" tabindex="-1">
+            <h3 class="text-2xl font-bold text-brand-blue" data-i18n="admin_benefits_title">Beneficios operativos</h3>
+            <p class="mt-2 max-w-3xl text-slate-600" data-i18n="admin_benefits_lead">
+              Tu equipo deja de depender de terminales fijas y procesos manuales: todo el hotel, en tiempo real, desde el celular.
+            </p>
+            <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <li class="card">
+                <i data-lucide="layout-dashboard" class="h-8 w-8 text-brand-blue"></i>
+                <h4 class="mt-3 font-bold" data-i18n="admin_benefit1_title">Habitaciones en tiempo real</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="admin_benefit1_desc">
+                  Identifica al instante habitaciones libres, ocupadas, en limpieza o en mantenimiento.
                 </p>
-                <a href="#" xx="showView('home-view', '#pilot')" class="cta-button text-white font-bold text-lg py-4 px-10 rounded-full uppercase font-body tracking-wider" data-key="hero_cta">
-                    Try DEMO
+              </li>
+              <li class="card">
+                <i data-lucide="clipboard-check" class="h-8 w-8 text-brand-blue"></i>
+                <h4 class="mt-3 font-bold" data-i18n="admin_benefit2_title">Tareas del personal</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="admin_benefit2_desc">
+                  Asigna limpieza, mantenimiento y recepción desde el celular, con notificaciones en tiempo real.
+                </p>
+              </li>
+              <li class="card">
+                <i data-lucide="key-round" class="h-8 w-8 text-brand-blue"></i>
+                <h4 class="mt-3 font-bold" data-i18n="admin_benefit3_title">Check-in y acceso digital</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="admin_benefit3_desc">
+                  Registro automático y acceso a la habitación desde el móvil, sin colas en recepción.
+                </p>
+              </li>
+              <li class="card">
+                <i data-lucide="zap" class="h-8 w-8 text-brand-blue"></i>
+                <h4 class="mt-3 font-bold" data-i18n="admin_benefit4_title">Energía bajo control</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="admin_benefit4_desc">
+                  Monitorea temperatura, iluminación y consumo de cada habitación con sensores IoT.
+                </p>
+              </li>
+            </ul>
+
+            <div class="mt-10 rounded-2xl bg-brand-blue p-6 text-white md:p-8" aria-labelledby="admin-roi-title">
+              <h3 id="admin-roi-title" class="text-2xl font-bold" data-i18n="admin_roi_title">Retorno de inversión (ROI)</h3>
+              <p class="mt-2 max-w-3xl text-slate-200" data-i18n="admin_roi_lead">
+                Menos tiempo operativo y menos consumo energético, sin invertir en sistemas POS/PMS tradicionales: SmartStay funciona con un gateway IoT de bajo costo.
+              </p>
+              <dl class="mt-6 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-xl bg-white/10 p-4">
+                  <dt class="text-sm text-slate-200" data-i18n="admin_roi_checkin_label">Tiempo promedio de check-in</dt>
+                  <dd class="font-brand text-4xl font-bold text-brand-green">−40%</dd>
+                </div>
+                <div class="rounded-xl bg-white/10 p-4">
+                  <dt class="text-sm text-slate-200" data-i18n="admin_roi_productivity_label">Productividad en limpieza y asignación de tareas</dt>
+                  <dd class="font-brand text-4xl font-bold text-brand-green">+15%</dd>
+                </div>
+                <div class="rounded-xl bg-white/10 p-4">
+                  <dt class="text-sm text-slate-200" data-i18n="admin_roi_satisfaction_label">Satisfacción del huésped</dt>
+                  <dd class="font-brand text-4xl font-bold text-brand-green">+20%</dd>
+                </div>
+              </dl>
+              <p class="mt-4 text-xs text-slate-300" data-i18n="admin_roi_disclaimer">
+                Metas de impacto definidas en nuestra investigación de usuarios (hipótesis Lean UX). Las validamos con pilotos; el resultado real depende de cada hotel.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-brand-blue" data-i18n="admin_stories_title">Casos de éxito</h3>
+                <p class="mt-1 text-slate-600" data-i18n="admin_stories_desc">
+                  Mira cómo se aplica SmartStay en hoteles boutique, alojamientos alternativos y cadenas.
+                </p>
+              </div>
+              <a href="#success-stories" class="btn btn-outline shrink-0" data-i18n="admin_stories_cta">Ver casos de éxito</a>
+            </div>
+
+            <div class="mt-10" data-cta-group>
+              <h3 class="text-xl font-bold text-brand-blue" data-i18n="cta_group_title_admin">¿Listo para dar el siguiente paso?</h3>
+              <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a href="#demo" class="btn btn-primary" data-cta="demo" data-i18n="cta_request_demo">Solicitar demo</a>
+                <a href="#contact" class="btn btn-secondary" data-cta="sales" data-i18n="cta_contact_sales">Contactar a ventas</a>
+                <button type="button" class="btn btn-outline" data-cta="app" data-app-download data-i18n="cta_download_app">Descargar la app</button>
+              </div>
+              <p class="mt-3 rounded-lg bg-brand-beige p-3 text-sm text-slate-700" role="status" data-app-download-status hidden></p>
+            </div>
+          </div>
+
+          <!-- Guest panel -->
+          <div id="profile-panel-guest" role="tabpanel" aria-labelledby="profile-tab-guest" class="mt-8" data-profile-panel="guest" tabindex="-1" hidden>
+            <h3 class="text-2xl font-bold text-brand-blue" data-i18n="guest_title">Tu estancia, desde tu celular</h3>
+            <p class="mt-2 max-w-3xl text-slate-600" data-i18n="guest_lead">
+              En los hoteles que usan SmartStay controlas tu habitación y te comunicas con el hotel sin filas ni llamadas.
+            </p>
+            <div class="mt-6 grid gap-4 md:grid-cols-3">
+              <article class="card" data-guest-benefit="comfort">
+                <i data-lucide="thermometer-sun" class="h-8 w-8 text-brand-green-strong"></i>
+                <h4 class="mt-3 text-lg font-bold" data-i18n="guest_comfort_title">Confort</h4>
+                <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                  <li data-i18n="guest_comfort_item1">Ajusta la temperatura y la iluminación de tu habitación desde la app.</li>
+                  <li data-i18n="guest_comfort_item2">Programa la limpieza a la hora que prefieras.</li>
+                </ul>
+              </article>
+              <article class="card" data-guest-benefit="experience">
+                <i data-lucide="concierge-bell" class="h-8 w-8 text-brand-green-strong"></i>
+                <h4 class="mt-3 text-lg font-bold" data-i18n="guest_experience_title">Experiencia</h4>
+                <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                  <li data-i18n="guest_experience_item1">Check-in digital: llega y sube directo a tu habitación.</li>
+                  <li data-i18n="guest_experience_item2">Pide room service y haz solicitudes sin llamar a recepción.</li>
+                </ul>
+              </article>
+              <article class="card" data-guest-benefit="technology">
+                <i data-lucide="smartphone-nfc" class="h-8 w-8 text-brand-green-strong"></i>
+                <h4 class="mt-3 text-lg font-bold" data-i18n="guest_technology_title">Tecnología</h4>
+                <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                  <li data-i18n="guest_technology_item1">Llave digital en tu teléfono.</li>
+                  <li data-i18n="guest_technology_item2">Notificaciones del hotel en tiempo real.</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="mt-10" data-cta-group>
+              <h3 class="text-xl font-bold text-brand-blue" data-i18n="cta_group_title_guest">Lleva SmartStay contigo</h3>
+              <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <button type="button" class="btn btn-primary" data-cta="app" data-app-download data-i18n="cta_download_app">Descargar la app</button>
+                <a href="#demo" class="btn btn-secondary" data-cta="demo" data-i18n="cta_guest_recommend_demo">¿Tienes un hotel? Solicita una demo</a>
+                <a href="#contact" class="btn btn-outline" data-cta="sales" data-i18n="cta_contact_sales">Contactar a ventas</a>
+              </div>
+              <p class="mt-3 rounded-lg bg-brand-beige p-3 text-sm text-slate-700" role="status" data-app-download-status hidden></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PRODUCTS ============ -->
+      <section id="products" class="section bg-white" aria-labelledby="products-title">
+        <div class="container-page">
+          <p class="section-eyebrow" data-i18n="products_eyebrow">Producto</p>
+          <h2 id="products-title" class="section-title" data-i18n="products_title">
+            Tecnología que transforma la gestión hotelera
+          </h2>
+          <p class="section-lead" data-i18n="products_intro">
+            Un ecosistema modular: elige exactamente lo que tu hotel necesita o intégralo todo en una sola solución.
+          </p>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2">
+            <article class="rounded-2xl bg-brand-blue p-6 text-white shadow-lg md:p-8">
+              <i data-lucide="building-2" class="mb-4 h-10 w-10 text-brand-green"></i>
+              <h3 class="text-xl font-bold md:text-2xl" data-i18n="product1_title">Gestión hotelera</h3>
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-100">
+                <li data-i18n="product1_feat1">PMS: control de reservas, habitaciones y check-in/out.</li>
+                <li data-i18n="product1_feat2">Channel Manager: sincronización con Booking, Expedia y Airbnb.</li>
+                <li data-i18n="product1_feat3">Motor de reservas web: reservas directas desde la web del hotel.</li>
+              </ul>
+            </article>
+            <article class="rounded-2xl bg-brand-blue p-6 text-white shadow-lg md:p-8">
+              <i data-lucide="smartphone" class="mb-4 h-10 w-10 text-brand-green"></i>
+              <h3 class="text-xl font-bold md:text-2xl" data-i18n="product2_title">Experiencia del huésped</h3>
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-100">
+                <li data-i18n="product2_feat1">Control inteligente de la habitación (IoT): luces, climatización y TV desde el celular.</li>
+                <li data-i18n="product2_feat2">App para huéspedes: check-in online, room service y solicitudes.</li>
+                <li data-i18n="product2_feat3">Feedback y encuestas: opiniones en tiempo real.</li>
+              </ul>
+            </article>
+            <article class="rounded-2xl bg-brand-blue p-6 text-white shadow-lg md:p-8">
+              <i data-lucide="chart-no-axes-combined" class="mb-4 h-10 w-10 text-brand-green"></i>
+              <h3 class="text-xl font-bold md:text-2xl" data-i18n="product3_title">Finanzas y operación</h3>
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-100">
+                <li data-i18n="product3_feat1">Reportes financieros: panel con métricas de ingresos y gastos.</li>
+                <li data-i18n="product3_feat2">Gestión de pagos: tarjetas, billeteras digitales y facturación electrónica.</li>
+                <li data-i18n="product3_feat3">Inventario y housekeeping: suministros, limpieza y mantenimiento.</li>
+              </ul>
+            </article>
+            <article class="rounded-2xl bg-brand-blue p-6 text-white shadow-lg md:p-8">
+              <i data-lucide="shield-check" class="mb-4 h-10 w-10 text-brand-green"></i>
+              <h3 class="text-xl font-bold md:text-2xl" data-i18n="product4_title">Seguridad y soporte</h3>
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-100">
+                <li data-i18n="product4_feat1">Control de accesos: llaves digitales para huéspedes y personal.</li>
+                <li data-i18n="product4_feat2">Soporte y capacitación: acompañamiento continuo para tu equipo.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div id="product-video" class="mt-16" hidden>
+            <h3 class="text-center text-2xl font-bold text-brand-blue" data-i18n="products_video_title">
+              Mira SmartStay en acción
+            </h3>
+            <div class="mx-auto mt-6 max-w-4xl overflow-hidden rounded-2xl shadow-xl">
+              <iframe
+                class="aspect-video w-full"
+                title="Video de SmartStay"
+                data-i18n-attr="title:products_video_title"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <h3 class="mt-16 text-2xl font-bold text-brand-blue" data-i18n="solutions_title">
+            Soluciones para cada tipo de alojamiento
+          </h3>
+          <div class="mt-6 grid gap-6 md:grid-cols-3">
+            <article class="card flex flex-col">
+              <h4 class="text-lg font-bold text-brand-blue" data-i18n="hotel_type_boutique">Hotel boutique</h4>
+              <p class="mt-2 text-slate-600" data-i18n="solutions_boutique_desc">
+                Para hoteles pequeños que buscan una experiencia personalizada.
+              </p>
+              <ul class="mt-4 flex-1 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                <li data-i18n="solutions_item_pms">PMS</li>
+                <li data-i18n="solutions_item_booking_engine">Motor de reservas web</li>
+                <li data-i18n="solutions_item_guest_app">App para huéspedes</li>
+                <li data-i18n="solutions_item_feedback">Feedback y encuestas</li>
+              </ul>
+              <a href="#demo" class="btn btn-outline mt-6" data-demo-prefill-type="boutique" data-i18n="cta_request_demo">Solicitar demo</a>
+            </article>
+            <article class="card flex flex-col">
+              <h4 class="text-lg font-bold text-brand-blue" data-i18n="hotel_type_alternative">Alojamiento alternativo</h4>
+              <p class="mt-2 text-slate-600" data-i18n="solutions_alternative_desc">
+                Para hostales, lodges y negocios flexibles.
+              </p>
+              <ul class="mt-4 flex-1 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                <li data-i18n="solutions_item_booking_engine">Motor de reservas web</li>
+                <li data-i18n="solutions_item_payments">Gestión de pagos</li>
+                <li data-i18n="solutions_item_guest_app">App para huéspedes</li>
+                <li data-i18n="solutions_item_iot">Control de habitación (IoT)</li>
+              </ul>
+              <a href="#demo" class="btn btn-outline mt-6" data-demo-prefill-type="alternative" data-i18n="cta_request_demo">Solicitar demo</a>
+            </article>
+            <article class="card flex flex-col">
+              <h4 class="text-lg font-bold text-brand-blue" data-i18n="hotel_type_chain">Cadena hotelera</h4>
+              <p class="mt-2 text-slate-600" data-i18n="solutions_chain_desc">
+                Para grupos con varias sedes que necesitan una operación unificada.
+              </p>
+              <ul class="mt-4 flex-1 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                <li data-i18n="solutions_item_pms_advanced">PMS avanzado y Channel Manager</li>
+                <li data-i18n="solutions_item_housekeeping">Inventario y housekeeping</li>
+                <li data-i18n="solutions_item_access">Control de accesos</li>
+                <li data-i18n="solutions_item_analytics">Analítica avanzada</li>
+              </ul>
+              <a href="#demo" class="btn btn-outline mt-6" data-demo-prefill-type="chain" data-i18n="cta_request_demo">Solicitar demo</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SUCCESS STORIES (US-26) ============ -->
+      <section id="success-stories" class="section bg-white" aria-labelledby="stories-title">
+        <div class="container-page">
+          <p class="section-eyebrow" data-i18n="nav_success">Casos de éxito</p>
+          <h2 id="stories-title" class="section-title" data-i18n="stories_title">Resultados que puedes esperar</h2>
+          <p class="section-lead" data-i18n="stories_lead">
+            Revisa casos por tipo de alojamiento, con datos de ahorro de costos, satisfacción y tiempo.
+          </p>
+          <p class="mt-4 flex gap-2 rounded-lg bg-amber-50 p-3 text-sm text-amber-900 ring-1 ring-amber-200" data-stories-disclaimer>
+            <i data-lucide="info" class="mt-0.5 h-4 w-4 shrink-0"></i>
+            <span data-i18n="stories_disclaimer">
+              Casos ilustrativos: describen hoteles tipo y sus métricas reflejan las metas de impacto de nuestros pilotos. Los reemplazaremos por casos reales, con autorización de cada hotel, a medida que se publiquen.
+            </span>
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar por tipo de alojamiento" data-i18n-attr="aria-label:stories_filter_label">
+            <button type="button" class="chip min-h-11 bg-slate-100 px-4 text-sm text-slate-700 aria-pressed:bg-brand-blue aria-pressed:text-white" data-story-filter="all" aria-pressed="true" data-i18n="stories_filter_all">Todos</button>
+            <button type="button" class="chip min-h-11 bg-slate-100 px-4 text-sm text-slate-700 aria-pressed:bg-brand-blue aria-pressed:text-white" data-story-filter="boutique" aria-pressed="false" data-i18n="hotel_type_boutique">Hotel boutique</button>
+            <button type="button" class="chip min-h-11 bg-slate-100 px-4 text-sm text-slate-700 aria-pressed:bg-brand-blue aria-pressed:text-white" data-story-filter="alternative" aria-pressed="false" data-i18n="hotel_type_alternative">Alojamiento alternativo</button>
+            <button type="button" class="chip min-h-11 bg-slate-100 px-4 text-sm text-slate-700 aria-pressed:bg-brand-blue aria-pressed:text-white" data-story-filter="chain" aria-pressed="false" data-i18n="hotel_type_chain">Cadena hotelera</button>
+          </div>
+          <p class="mt-3 text-sm text-slate-600" role="status" aria-live="polite" data-stories-count></p>
+
+          <ul class="mt-6 grid gap-6 md:grid-cols-2" data-stories-list></ul>
+
+          <div class="mt-16" data-testimonial-video>
+            <h3 class="text-2xl font-bold text-brand-blue" data-i18n="stories_video_title">Testimonios en video</h3>
+            <p class="mt-2 text-slate-600" data-i18n="stories_video_lead">Administradores de hotel cuentan su experiencia con SmartStay.</p>
+            <div class="mt-6 max-w-4xl overflow-hidden rounded-2xl shadow-lg">
+              <iframe
+                class="aspect-video w-full"
+                title="Testimonio en video"
+                data-i18n-attr="title:stories_video_title"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                data-testimonial-video-frame
+                hidden
+              ></iframe>
+              <div
+                class="flex aspect-video w-full flex-col items-center justify-center gap-3 bg-slate-100 p-6 text-center text-slate-600"
+                data-testimonial-video-placeholder
+              >
+                <i data-lucide="video" class="h-10 w-10 text-slate-400"></i>
+                <p class="font-semibold" data-i18n="stories_video_placeholder_title">Video testimonial próximamente</p>
+                <p class="max-w-md text-sm" data-i18n="stories_video_placeholder_desc">
+                  Espacio reservado para el testimonio de un administrador de hotel. Se publicará cuando tengamos la grabación autorizada.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <template id="story-card-template">
+          <li data-story-card>
+            <article class="card flex h-full flex-col">
+              <div class="flex flex-wrap gap-2">
+                <span class="chip bg-brand-blue/10 text-brand-blue" data-story-type></span>
+                <span class="chip bg-amber-100 text-amber-900" data-story-illustrative></span>
+              </div>
+              <h3 class="mt-3 text-xl font-bold text-brand-blue" data-story-title></h3>
+              <p class="flex items-center gap-1 text-sm text-slate-500">
+                <i data-lucide="map-pin" class="h-4 w-4"></i><span data-story-location></span>
+              </p>
+              <p class="mt-3 flex-1 text-slate-700" data-story-summary></p>
+              <button type="button" class="btn btn-outline mt-4 self-start" aria-expanded="false" data-story-toggle></button>
+              <div class="mt-4 border-t border-slate-200 pt-4" data-story-details hidden>
+                <h4 class="font-bold" data-story-challenge-title></h4>
+                <p class="text-sm text-slate-600" data-story-challenge></p>
+                <h4 class="mt-3 font-bold" data-story-solution-title></h4>
+                <p class="text-sm text-slate-600" data-story-solution></p>
+                <dl class="mt-4 grid grid-cols-3 gap-2 text-center">
+                  <div class="flex flex-col-reverse justify-end rounded-lg bg-slate-50 p-2" data-metric="cost">
+                    <dt class="text-xs text-slate-600" data-metric-label></dt>
+                    <dd class="font-brand text-xl font-bold text-brand-green-strong" data-metric-value></dd>
+                  </div>
+                  <div class="flex flex-col-reverse justify-end rounded-lg bg-slate-50 p-2" data-metric="satisfaction">
+                    <dt class="text-xs text-slate-600" data-metric-label></dt>
+                    <dd class="font-brand text-xl font-bold text-brand-green-strong" data-metric-value></dd>
+                  </div>
+                  <div class="flex flex-col-reverse justify-end rounded-lg bg-slate-50 p-2" data-metric="time">
+                    <dt class="text-xs text-slate-600" data-metric-label></dt>
+                    <dd class="font-brand text-xl font-bold text-brand-green-strong" data-metric-value></dd>
+                  </div>
+                </dl>
+                <blockquote class="mt-4 border-l-4 border-brand-orange pl-3 text-sm text-slate-700 italic">
+                  <p data-story-quote></p>
+                  <footer class="mt-1 not-italic text-slate-500" data-story-quote-author></footer>
+                </blockquote>
+                <button type="button" class="btn btn-primary mt-4 w-full sm:w-auto" data-story-request></button>
+              </div>
+            </article>
+          </li>
+        </template>
+      </section>
+
+      <!-- ============ PRICING ============ -->
+      <section id="pricing" class="section bg-slate-50" aria-labelledby="pricing-title">
+        <div class="container-page">
+          <p class="section-eyebrow" data-i18n="pricing_eyebrow">Precios</p>
+          <h2 id="pricing-title" class="section-title" data-i18n="pricing_title">Planes que se adaptan a tu hotel</h2>
+          <p class="section-lead" data-i18n="pricing_lead">
+            Empieza con el Plan Normal y agrega módulos, o elige el Plan Plus con todo incluido.
+          </p>
+
+          <div class="mt-8 overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200">
+            <table class="w-full table-fixed text-left text-sm md:text-base">
+              <caption class="sr-only" data-i18n="pricing_caption">Comparación del Plan Normal y el Plan Plus</caption>
+              <colgroup>
+                <col class="w-[46%] md:w-1/2" />
+                <col />
+                <col />
+              </colgroup>
+              <thead class="bg-brand-blue text-white">
+                <tr>
+                  <th scope="col" class="p-3 md:p-4" data-i18n="pricing_header_feature">Módulo</th>
+                  <th scope="col" class="p-3 md:p-4" data-i18n="pricing_header_normal">Plan Normal</th>
+                  <th scope="col" class="bg-brand-orange-strong p-3 md:p-4" data-i18n="pricing_header_plus">Plan Plus</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_pms">PMS</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_channel">Channel Manager</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_booking_engine">Motor de reservas web</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_smart_room">Control de habitación (IoT)</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_addon_50">Adicional (+$50/mes)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_guest_app">App para huéspedes</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_addon_20">Adicional (+$20/mes)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_feedback">Feedback y encuestas</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_addon_15">Adicional (+$15/mes)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_reports">Reportes financieros</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_addon_40">Adicional (+$40/mes)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_payments">Gestión de pagos</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_addon_30">Adicional (+$30/mes)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_inventory">Inventario y housekeeping</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_addon_25">Adicional (+$25/mes)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_access">Control de accesos</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_addon_30">Adicional (+$30/mes)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_included">Incluido</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="p-3 font-semibold md:p-4" data-i18n="pricing_feat_support">Soporte</th>
+                  <td class="p-3 md:p-4" data-i18n="pricing_support_basic">Básico (correo y chat)</td>
+                  <td class="p-3 md:p-4" data-i18n="pricing_support_premium">Premium (teléfono y onboarding)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-8 text-center">
+            <a href="#demo" class="btn btn-primary" data-i18n="pricing_cta">Solicita una demo y una cotización</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DEMO & CONTACT (US-27) ============ -->
+      <section id="demo" class="section bg-brand-navy text-white" aria-labelledby="demo-title">
+        <div class="container-page grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <p class="section-eyebrow text-brand-green" data-i18n="demo_eyebrow">Demo gratuita</p>
+            <h2 id="demo-title" class="text-3xl font-bold md:text-4xl" data-i18n="demo_title">
+              Descubre cómo SmartStay puede transformar tu hotel
+            </h2>
+            <p class="mt-4 text-lg text-slate-200" data-i18n="demo_lead">
+              Cuéntanos sobre tu alojamiento y agenda una llamada de 30 minutos con nuestro equipo.
+            </p>
+            <ol class="mt-8 space-y-4">
+              <li class="flex gap-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green font-bold text-brand-navy">1</span>
+                <span data-i18n="demo_step1">Completa el formulario: toma menos de un minuto.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green font-bold text-brand-navy">2</span>
+                <span data-i18n="demo_step2">Recibe la confirmación al instante en tu correo.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green font-bold text-brand-navy">3</span>
+                <span data-i18n="demo_step3">Elige el día y la hora de tu demo en nuestro calendario.</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="rounded-2xl bg-white p-5 text-slate-800 shadow-2xl sm:p-8">
+            <form id="demo-form" novalidate data-demo-form>
+              <h3 class="text-xl font-bold text-brand-blue" data-i18n="demo_form_title">Solicita tu demo</h3>
+              <p class="mt-1 text-sm text-slate-500" data-i18n="demo_form_required_hint">Los campos marcados con * son obligatorios.</p>
+
+              <div class="mt-4 rounded-lg p-3 text-sm" role="alert" data-demo-alert hidden></div>
+
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="demo-firstName" class="form-label"><span data-i18n="demo_field_firstName">Nombre</span> *</label>
+                  <input id="demo-firstName" name="firstName" type="text" class="form-control" autocomplete="given-name" required />
+                  <p id="demo-firstName-error" class="form-error" data-error-for="firstName" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-lastName" class="form-label"><span data-i18n="demo_field_lastName">Apellido</span> *</label>
+                  <input id="demo-lastName" name="lastName" type="text" class="form-control" autocomplete="family-name" required />
+                  <p id="demo-lastName-error" class="form-error" data-error-for="lastName" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-hotelName" class="form-label"><span data-i18n="demo_field_hotelName">Nombre del hotel</span> *</label>
+                  <input id="demo-hotelName" name="hotelName" type="text" class="form-control" autocomplete="organization" required />
+                  <p id="demo-hotelName-error" class="form-error" data-error-for="hotelName" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-jobTitle" class="form-label"><span data-i18n="demo_field_jobTitle">Cargo</span> *</label>
+                  <input id="demo-jobTitle" name="jobTitle" type="text" class="form-control" autocomplete="organization-title" required />
+                  <p id="demo-jobTitle-error" class="form-error" data-error-for="jobTitle" hidden></p>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="demo-email" class="form-label"><span data-i18n="demo_field_email">Email corporativo</span> *</label>
+                  <input
+                    id="demo-email"
+                    name="email"
+                    type="email"
+                    inputmode="email"
+                    class="form-control"
+                    autocomplete="email"
+                    placeholder="nombre@tuhotel.com"
+                    data-i18n-attr="placeholder:demo_placeholder_email"
+                    required
+                  />
+                  <p id="demo-email-error" class="form-error" data-error-for="email" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-accommodationType" class="form-label"><span data-i18n="demo_field_accommodationType">Tipo de alojamiento</span> *</label>
+                  <select id="demo-accommodationType" name="accommodationType" class="form-control" required>
+                    <option value="" data-i18n="demo_select_placeholder">Selecciona una opción</option>
+                    <option value="boutique" data-i18n="hotel_type_boutique">Hotel boutique</option>
+                    <option value="alternative" data-i18n="hotel_type_alternative">Alojamiento alternativo</option>
+                    <option value="chain" data-i18n="hotel_type_chain">Cadena hotelera</option>
+                  </select>
+                  <p id="demo-accommodationType-error" class="form-error" data-error-for="accommodationType" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-roomsRange" class="form-label"><span data-i18n="demo_field_roomsRange">Número de habitaciones</span> *</label>
+                  <select id="demo-roomsRange" name="roomsRange" class="form-control" required>
+                    <option value="" data-i18n="demo_select_placeholder">Selecciona una opción</option>
+                    <option value="1-10">1–10</option>
+                    <option value="11-30">11–30</option>
+                    <option value="31-60">31–60</option>
+                    <option value="60+" data-i18n="demo_rooms_more_than_60">Más de 60</option>
+                  </select>
+                  <p id="demo-roomsRange-error" class="form-error" data-error-for="roomsRange" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-referralSource" class="form-label"><span data-i18n="demo_field_referralSource">¿Cómo nos conociste?</span> *</label>
+                  <select id="demo-referralSource" name="referralSource" class="form-control" required>
+                    <option value="" data-i18n="demo_select_placeholder">Selecciona una opción</option>
+                    <option value="search" data-i18n="demo_referral_search">Buscador</option>
+                    <option value="social" data-i18n="demo_referral_social">Redes sociales</option>
+                    <option value="referral" data-i18n="demo_referral_referral">Recomendación</option>
+                    <option value="event" data-i18n="demo_referral_event">Evento</option>
+                    <option value="other" data-i18n="demo_referral_other">Otro</option>
+                  </select>
+                  <p id="demo-referralSource-error" class="form-error" data-error-for="referralSource" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-phone" class="form-label">
+                    <span data-i18n="demo_field_phone">Teléfono</span>
+                    <span class="font-normal text-slate-500" data-i18n="demo_optional">(opcional)</span>
+                  </label>
+                  <input
+                    id="demo-phone"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    class="form-control"
+                    autocomplete="tel"
+                    maxlength="22"
+                    placeholder="+51 987 654 321"
+                  />
+                  <p id="demo-phone-error" class="form-error" data-error-for="phone" hidden></p>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="demo-message" class="form-label">
+                    <span data-i18n="demo_field_message">¿Algo más que debamos saber?</span>
+                    <span class="font-normal text-slate-500" data-i18n="demo_optional">(opcional)</span>
+                  </label>
+                  <textarea id="demo-message" name="message" rows="4" class="form-control" maxlength="500" aria-describedby="demo-message-counter"></textarea>
+                  <div class="flex items-start justify-between gap-2">
+                    <p id="demo-message-error" class="form-error" data-error-for="message" hidden></p>
+                    <p id="demo-message-counter" class="ml-auto mt-1 text-xs text-slate-500" aria-live="polite" data-message-counter>0/500</p>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary mt-6 w-full" data-demo-submit>
+                <span class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" aria-hidden="true" data-demo-spinner></span>
+                <span data-demo-submit-label data-i18n="demo_submit">Solicitar demo</span>
+              </button>
+              <p class="mt-3 text-center text-xs text-slate-500" data-i18n="demo_privacy">
+                Usaremos tus datos solo para contactarte sobre SmartStay.
+              </p>
+            </form>
+
+            <div data-demo-success tabindex="-1" hidden>
+              <span class="chip bg-emerald-100 text-emerald-800">
+                <i data-lucide="circle-check" class="h-4 w-4"></i><span data-i18n="demo_success_badge">Solicitud enviada</span>
+              </span>
+              <h3 class="mt-3 text-2xl font-bold text-brand-blue" data-demo-success-title></h3>
+              <p class="mt-2 text-slate-600" data-demo-success-detail></p>
+              <p class="mt-1 text-sm text-slate-500" data-demo-success-reference></p>
+
+              <div class="mt-6" role="status" data-demo-redirecting>
+                <p class="font-semibold" data-i18n="demo_redirecting">Te llevamos a agendar tu llamada…</p>
+                <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-0 rounded-full bg-brand-green-strong animate-progress"></div>
+                </div>
+              </div>
+
+              <div class="mt-6" data-demo-scheduling hidden>
+                <h4 class="text-lg font-bold" data-i18n="demo_schedule_title">Agenda tu llamada</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="demo_schedule_lead">Elige el día y la hora que prefieras. Ya completamos tu nombre y correo.</p>
+                <iframe
+                  class="mt-4 h-[640px] w-full rounded-lg border border-slate-200"
+                  title="Calendario para agendar la demo"
+                  data-i18n-attr="title:demo_schedule_iframe_title"
+                  loading="lazy"
+                  data-cal-embed
+                ></iframe>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue underline" target="_blank" rel="noopener noreferrer" data-cal-link>
+                  <span data-i18n="demo_schedule_open_new_tab">Abrir el calendario en una pestaña nueva</span>
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
                 </a>
+              </div>
             </div>
+          </div>
         </div>
 
-        <div id="about-us" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-brand font-bold text-[--primary-blue] mb-4" data-key="about_title">Who We Are</h2>
-                <p class="max-w-3xl mx-auto text-gray-600 mb-16" data-key="about_description">
-                    Smart Stay is a hotel management platform that integrates reservations, operations, and guest experience in one place. We digitize your hotel so you can save time, reduce costs, and offer a first-class service. We are a team of passionate software engineering students dedicated to revolutionizing the hospitality industry with technology.
+        <div id="contact" class="container-page mt-16" aria-labelledby="contact-title">
+          <h3 id="contact-title" class="text-2xl font-bold" data-i18n="contact_title">¿Prefieres hablar directo con ventas?</h3>
+          <p class="mt-2 text-slate-300" data-i18n="contact_lead">Nuestro equipo comercial te responde por el canal que prefieras.</p>
+          <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+            <li>
+              <div class="flex min-h-11 items-center gap-3 rounded-xl bg-white/10 p-4" data-contact="phone">
+                <i data-lucide="phone" class="h-6 w-6 shrink-0 text-brand-green"></i>
+                <span>
+                  <span class="block text-sm text-slate-300" data-i18n="contact_phone">Teléfono</span>
+                  <span class="block font-semibold" data-contact-value>+51 947 318 265</span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <a href="mailto:ventas@smartstay.pe" class="flex min-h-11 items-center gap-3 rounded-xl bg-white/10 p-4 hover:bg-white/15" data-contact="email">
+                <i data-lucide="mail" class="h-6 w-6 shrink-0 text-brand-green"></i>
+                <span class="min-w-0">
+                  <span class="block text-sm text-slate-300" data-i18n="contact_email">Correo</span>
+                  <span class="block font-semibold break-all" data-contact-value>ventas@smartstay.pe</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <div class="flex min-h-11 items-center gap-3 rounded-xl bg-white/10 p-4" data-contact="whatsapp">
+                <i data-lucide="message-circle" class="h-6 w-6 shrink-0 text-brand-green"></i>
+                <span>
+                  <span class="block text-sm text-slate-300">WhatsApp</span>
+                  <span class="block font-semibold" data-contact-value>+51 962 574 813</span>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ ABOUT US (US-28) ============ -->
+      <section id="about" class="section bg-brand-beige/60" aria-labelledby="about-title">
+        <div class="container-page">
+          <p class="section-eyebrow" data-i18n="nav_about">Nosotros</p>
+          <h2 id="about-title" class="section-title" data-i18n="about_title">Somos Movildev, el equipo detrás de SmartStay</h2>
+          <p class="section-lead" data-i18n="about_lead">
+            Transformamos la gestión hotelera con tecnología móvil e IoT: una sola solución para la operación del hotel, el control de las habitaciones y la experiencia del huésped.
+          </p>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2">
+            <article class="card" data-about="mission">
+              <i data-lucide="target" class="h-8 w-8 text-brand-orange-strong"></i>
+              <h3 class="mt-3 text-xl font-bold text-brand-blue" data-i18n="about_mission_title">Misión</h3>
+              <p class="mt-2 text-slate-700" data-i18n="about_mission">
+                Ayudar a hoteles boutique y pequeños a operar con información en tiempo real y a ofrecer a sus huéspedes una estancia autónoma, cómoda y sin fricciones, con tecnología móvil e IoT accesible.
+              </p>
+            </article>
+            <article class="card" data-about="vision">
+              <i data-lucide="telescope" class="h-8 w-8 text-brand-orange-strong"></i>
+              <h3 class="mt-3 text-xl font-bold text-brand-blue" data-i18n="about_vision_title">Visión</h3>
+              <p class="mt-2 text-slate-700" data-i18n="about_vision">
+                Ser la plataforma de referencia en Latinoamérica para hoteles independientes que quieren operar de forma eficiente y sostenible y ofrecer experiencias inteligentes.
+              </p>
+            </article>
+          </div>
+
+          <div class="mt-12" data-about="values">
+            <h3 class="text-2xl font-bold text-brand-blue" data-i18n="about_values_title">Nuestros valores</h3>
+            <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              <li class="card p-5">
+                <h4 class="font-bold" data-i18n="about_value1_title">Hospitalidad primero</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_value1_desc">La tecnología está al servicio de las personas: huéspedes y equipos.</p>
+              </li>
+              <li class="card p-5">
+                <h4 class="font-bold" data-i18n="about_value2_title">Innovación con propósito</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_value2_desc">Construimos solo lo que resuelve un problema real del hotel.</p>
+              </li>
+              <li class="card p-5">
+                <h4 class="font-bold" data-i18n="about_value3_title">Transparencia</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_value3_desc">Hablamos con datos y distinguimos metas de resultados.</p>
+              </li>
+              <li class="card p-5">
+                <h4 class="font-bold" data-i18n="about_value4_title">Eficiencia sostenible</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_value4_desc">Cada kilovatio y cada minuto ahorrados cuentan.</p>
+              </li>
+              <li class="card p-5">
+                <h4 class="font-bold" data-i18n="about_value5_title">Colaboración</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_value5_desc">Diseñamos junto al personal y los huéspedes, no para ellos.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-12" data-about="history">
+            <h3 class="text-2xl font-bold text-brand-blue" data-i18n="about_history_title">Nuestra historia</h3>
+            <ol class="mt-6 space-y-6 border-l-2 border-brand-blue/30 pl-6">
+              <li class="relative">
+                <span class="absolute top-1 -left-[1.95rem] h-3 w-3 rounded-full bg-brand-blue"></span>
+                <h4 class="font-bold" data-i18n="about_history1_title">Escuchamos al hotel</h4>
+                <p class="mt-1 text-slate-600" data-i18n="about_history1_desc">
+                  Nacimos en las aulas de Ingeniería de Software de la UPC, en Lima. Entrevistamos a personal operativo y a huéspedes y encuestamos a equipos de hoteles para entender por qué la operación seguía siendo manual.
                 </p>
-                <h3 class="text-2xl md:text-3xl font-brand font-bold text-[--primary-blue] mb-12" data-key="team_title">Meet the Team</h3>
-                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-                    <div class="team-member-card text-center"> <img src="assets/img/members/italo-verona.jpg" alt="Ítalo Verona Flores" class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover"> <h4 class="font-brand font-bold text-lg" data-key="team_member1_name">Ítalo Verona Flores</h4> <p class="text-gray-500" data-key="team_member1_role">Project Lead & Architect</p> </div>
-                    <div class="team-member-card text-center"> <img src="assets/img/members/piero-sulca.jpg" alt="Piero Sulca Sanchez" class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover"> <h4 class="font-brand font-bold text-lg" data-key="team_member2_name">Piero Sulca Sanchez</h4> <p class="text-gray-500" data-key="team_member2_role">Frontend Developer</p> </div>
-                    <div class="team-member-card text-center"> <img src="assets/img/members/alejandro-galindo.jpg" alt="Alejandro Galindo Montero" class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover"> <h4 class="font-brand font-bold text-lg" data-key="team_member3_name">Alejandro Galindo Montero</h4> <p class="text-gray-500" data-key="team_member3_role">Backend Developer</p> </div>
-                    <div class="team-member-card text-center"> <img src="assets/img/members/samuel-bonifacio-jaramillo.png" alt="Samuel Bonifacio Jaramillo" class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover"> <h4 class="font-brand font-bold text-lg" data-key="team_member4_name">Samuel Bonifacio Jaramillo</h4> <p class="text-gray-500" data-key="team_member4_role">Full Stack Developer &amp; AI</p> </div>
-                    <div class="team-member-card text-center"> <img src="assets/img/members/default-avatar.svg" alt="Alberto Ponce Perales" class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover"> <h4 class="font-brand font-bold text-lg" data-key="team_member5_name">Alberto Ponce Perales</h4> <p class="text-gray-500" data-key="team_member5_role">QA &amp; Testing</p> </div>
-                </div>
-            </div>
-            <!-- VIDEO: Full-width YouTube section under Meet the Team -->
-<div class="container mx-auto px-6 mt-12">
-  <h3 class="text-2xl md:text-3xl font-brand font-bold text-[--primary-blue] mb-6 text-center" data-key="team_video_title">VIDEO ABOUT THE TEAM</h3>
-  <div class="video-full rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
-    <iframe
-      src="https://www.youtube.com/embed/sImH4aAUTik?rel=0&modestbranding=1"
-      title="VIDEO ABOUT THE TEAM"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      class="w-full aspect-video"></iframe>
-  </div>
-        </div>
+              </li>
+              <li class="relative">
+                <span class="absolute top-1 -left-[1.95rem] h-3 w-3 rounded-full bg-brand-blue"></span>
+                <h4 class="font-bold" data-i18n="about_history2_title">Diseñamos SmartStay</h4>
+                <p class="mt-1 text-slate-600" data-i18n="about_history2_desc">
+                  Definimos una solución integral: app Android para el personal, app multiplataforma para el huésped, una API RESTful y un gateway IoT de bajo costo.
+                </p>
+              </li>
+              <li class="relative">
+                <span class="absolute top-1 -left-[1.95rem] h-3 w-3 rounded-full bg-brand-blue"></span>
+                <h4 class="font-bold" data-i18n="about_history3_title">Construimos por sprints</h4>
+                <p class="mt-1 text-slate-600" data-i18n="about_history3_desc">
+                  Desarrollamos la landing, la aplicación web, las apps móviles y los servicios con entregas iterativas y pruebas en cada paso.
+                </p>
+              </li>
+              <li class="relative">
+                <span class="absolute top-1 -left-[1.95rem] h-3 w-3 rounded-full bg-brand-orange"></span>
+                <h4 class="font-bold" data-i18n="about_history4_title">Lo que viene</h4>
+                <p class="mt-1 text-slate-600" data-i18n="about_history4_desc">
+                  Pilotos con hoteles para validar nuestras metas de impacto y convertirlas en resultados medidos.
+                </p>
+              </li>
+            </ol>
+          </div>
 
-        <div id="pilot" class="py-20 bg-[--accent-green]">
-            <div class="container mx-auto px-6">
-                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8">
-                    <div class="md:w-1/2 text-white">
-                        <i data-lucide="quote" class="w-12 h-12 text-white/50 mb-4"></i>
-                        <p class="text-xl md:text-2xl italic mb-6 leading-relaxed" data-key="pilot_testimonial_text">
-                            "With Smart Stay, we have reduced reservation and check-in/check-out management time by 40%, optimizing our staff's work. The platform is intuitive, and support is always available when we need it."
-                        </p>
-                        <div>
-                            <p class="font-brand font-bold text-lg" data-key="pilot_testimonial_name">Maria Lopez</p>
-                            <p class="text-white/80" data-key="pilot_testimonial_role">General Manager, Hotel Sol y Mar</p>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 flex justify-center">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                             alt="Maria Lopez, General Manager"
-                             class="testimonial-blob w-64 h-64 md:w-80 md:h-80 object-cover">
-                    </div>
-                </div>
-                <!-- === NEED HELP FORM (replaces pilot) === -->
-<div id="pilot" class="py-20 bg-[--accent-green]">
-  <div class="container mx-auto px-6">
-    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-2xl">
-      <div class="text-white text-center mb-8">
-        <h2 class="text-3xl md:text-4xl font-brand font-bold" data-key="needhelp_title">Need help?</h2>
-        <p class="max-w-2xl mx-auto text-white/90 mt-4" data-key="needhelp_subtitle">
-          Tell us about your hotel and what you need — we'll contact you with a tailored proposal.
+          <div class="mt-12" data-about="team">
+            <h3 class="text-2xl font-bold text-brand-blue" data-i18n="about_team_title">Equipo fundador y liderazgo</h3>
+            <p class="mt-2 max-w-3xl text-slate-600" data-i18n="about_team_lead">
+              Movildev está liderada por sus cinco cofundadores, estudiantes de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC).
+            </p>
+            <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              <li class="card flex flex-col items-center p-4 text-center" data-team-member>
+                <img src="./src/assets/team/samuel-bonifacio-jaramillo.webp" alt="Samuel Bonifacio Jaramillo" width="96" height="96" loading="lazy" class="h-24 w-24 rounded-full object-cover shadow" />
+                <h4 class="mt-3 font-bold">Samuel Bonifacio Jaramillo</h4>
+                <p class="text-xs font-semibold text-brand-green-strong" data-i18n="about_team_role_samuel">Desarrollador full stack e IA</p>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_team_focus_samuel">Full stack e inteligencia artificial</p>
+              </li>
+              <li class="card flex flex-col items-center p-4 text-center" data-team-member>
+                <span class="flex h-24 w-24 items-center justify-center rounded-full bg-brand-blue font-brand text-2xl font-bold text-white shadow" aria-hidden="true">AP</span>
+                <h4 class="mt-3 font-bold">Alberto Ponce Perales</h4>
+                <p class="text-xs font-semibold text-brand-green-strong" data-i18n="about_team_role_alberto">QA y testing</p>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_team_focus_alberto">Desarrollo de software con C++ y Java</p>
+              </li>
+              <li class="card flex flex-col items-center p-4 text-center" data-team-member>
+                <img src="./src/assets/team/italo-verona.webp" alt="Ítalo Verona Flores" width="96" height="96" loading="lazy" class="h-24 w-24 rounded-full object-cover shadow" />
+                <h4 class="mt-3 font-bold">Ítalo Verona Flores</h4>
+                <p class="text-xs font-semibold text-brand-green-strong" data-i18n="about_team_role_italo">Líder de proyecto y arquitecto</p>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_team_focus_italo">Full stack y arquitectura de sistemas</p>
+              </li>
+              <li class="card flex flex-col items-center p-4 text-center" data-team-member>
+                <img src="./src/assets/team/piero-sulca.webp" alt="Piero Sulca Sánchez" width="96" height="96" loading="lazy" class="h-24 w-24 rounded-full object-cover shadow" />
+                <h4 class="mt-3 font-bold">Piero Sulca Sánchez</h4>
+                <p class="text-xs font-semibold text-brand-green-strong" data-i18n="about_team_role_piero">Desarrollador frontend</p>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_team_focus_piero">Front End y diseño de interfaces</p>
+              </li>
+              <li class="card flex flex-col items-center p-4 text-center" data-team-member>
+                <img src="./src/assets/team/alejandro-galindo.webp" alt="Alejandro Galindo Montero" width="96" height="96" loading="lazy" class="h-24 w-24 rounded-full object-cover shadow" />
+                <h4 class="mt-3 font-bold">Alejandro Galindo Montero</h4>
+                <p class="text-xs font-semibold text-brand-green-strong" data-i18n="about_team_role_alejandro">Desarrollador backend</p>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_team_focus_alejandro">Desarrollo web y móvil full stack</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-12 rounded-2xl bg-brand-green-strong p-6 text-white md:p-8" data-about="sustainability">
+            <div class="flex items-center gap-3">
+              <i data-lucide="leaf" class="h-8 w-8"></i>
+              <h3 class="text-2xl font-bold" data-i18n="about_sustainability_title">Compromiso con la sostenibilidad</h3>
+            </div>
+            <p class="mt-2 max-w-3xl text-emerald-50" data-i18n="about_sustainability_lead">
+              La eficiencia energética es parte del producto, no un añadido: lo que no se mide no se puede reducir.
+            </p>
+            <ul class="mt-6 grid gap-4 sm:grid-cols-2">
+              <li class="rounded-xl bg-white/10 p-4">
+                <h4 class="font-bold" data-i18n="about_sustainability1_title">Energía solo donde se necesita</h4>
+                <p class="mt-1 text-sm text-emerald-50" data-i18n="about_sustainability1_desc">Monitoreo IoT de temperatura, iluminación y consumo para apagar equipos en habitaciones vacías.</p>
+              </li>
+              <li class="rounded-xl bg-white/10 p-4">
+                <h4 class="font-bold" data-i18n="about_sustainability2_title">Datos para decidir</h4>
+                <p class="mt-1 text-sm text-emerald-50" data-i18n="about_sustainability2_desc">Reportes de consumo para que cada hotel mida y reduzca su huella.</p>
+              </li>
+              <li class="rounded-xl bg-white/10 p-4">
+                <h4 class="font-bold" data-i18n="about_sustainability3_title">Hardware de bajo costo</h4>
+                <p class="mt-1 text-sm text-emerald-50" data-i18n="about_sustainability3_desc">Un gateway IoT que se integra con la infraestructura existente, sin reemplazar equipos.</p>
+              </li>
+              <li class="rounded-xl bg-white/10 p-4">
+                <h4 class="font-bold" data-i18n="about_sustainability4_title">Menos papel</h4>
+                <p class="mt-1 text-sm text-emerald-50" data-i18n="about_sustainability4_desc">Check-in, llaves y comprobantes digitales.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-12" data-about="credentials">
+            <h3 class="text-2xl font-bold text-brand-blue" data-i18n="about_credentials_title">Certificaciones y reconocimientos</h3>
+            <p class="mt-2 max-w-3xl text-slate-600" data-i18n="about_credentials_lead">
+              Todavía no contamos con certificaciones externas. Estos son los estándares que nos comprometemos a alcanzar, y aquí verás su estado real.
+            </p>
+            <ul class="mt-6 grid gap-4 md:grid-cols-3">
+              <li class="card" data-credential>
+                <span class="chip bg-slate-100 text-slate-700" data-i18n="about_credential_status_goal">Meta</span>
+                <h4 class="mt-3 font-bold" data-i18n="about_credential1_title">ISO/IEC 27001</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_credential1_desc">Sistema de gestión de seguridad de la información para proteger los datos de hoteles y huéspedes.</p>
+              </li>
+              <li class="card" data-credential>
+                <span class="chip bg-sky-100 text-sky-800" data-i18n="about_credential_status_commitment">Compromiso</span>
+                <h4 class="mt-3 font-bold" data-i18n="about_credential2_title">Ley N.º 29733 de Protección de Datos Personales (Perú)</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_credential2_desc">Diseñamos el tratamiento de datos personales para cumplirla desde el inicio.</p>
+              </li>
+              <li class="card" data-credential>
+                <span class="chip bg-amber-100 text-amber-900" data-i18n="about_credential_status_in_progress">En curso</span>
+                <h4 class="mt-3 font-bold" data-i18n="about_credential3_title">Accesibilidad WCAG 2.2 AA</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="about_credential3_desc">Nuestras interfaces se construyen y prueban para ser usables por todas las personas.</p>
+              </li>
+            </ul>
+            <p class="mt-4 text-sm text-slate-600" data-i18n="about_recognitions_note">
+              Reconocimientos: aún no tenemos premios externos. Los publicaremos aquí cuando los obtengamos.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-brand-navy text-white">
+      <div class="container-page grid gap-8 py-12 sm:grid-cols-2 md:grid-cols-4">
+        <div>
+          <p class="font-brand text-lg font-bold">SMART STAY</p>
+          <p class="mt-2 text-sm text-slate-300" data-i18n="footer_tagline">Transformando la hospitalidad con tecnología.</p>
+        </div>
+        <nav aria-label="Producto" data-i18n-attr="aria-label:footer_product">
+          <p class="font-bold" data-i18n="footer_product">Producto</p>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300">
+            <li><a href="#profile" class="hover:underline" data-i18n="nav_for_you">Para ti</a></li>
+            <li><a href="#products" class="hover:underline" data-i18n="nav_products">Producto</a></li>
+            <li><a href="#pricing" class="hover:underline" data-i18n="nav_pricing">Precios</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Compañía" data-i18n-attr="aria-label:footer_company">
+          <p class="font-bold" data-i18n="footer_company">Compañía</p>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300">
+            <li><a href="#about" class="hover:underline" data-i18n="nav_about">Nosotros</a></li>
+            <li><a href="#success-stories" class="hover:underline" data-i18n="nav_success">Casos de éxito</a></li>
+            <li><a href="#contact" class="hover:underline" data-i18n="nav_contact">Contacto</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Cuenta" data-i18n-attr="aria-label:footer_account">
+          <p class="font-bold" data-i18n="footer_account">Cuenta</p>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300">
+            <li>
+              <a href="https://smartstay-3cffc.web.app/login" class="hover:underline" data-app-link="login" data-i18n="nav_login"
+                >Iniciar sesión</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://smartstay-3cffc.web.app/register"
+                class="hover:underline"
+                data-app-link="register"
+                data-i18n="nav_register"
+                >Crear cuenta</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="border-t border-white/10">
+        <p class="container-page py-6 text-center text-sm text-slate-400">
+          &copy; <span data-current-year>2026</span> Movildev · SmartStay.
+          <span data-i18n="footer_made_in">Hecho con pasión en Lima, Perú.</span>
         </p>
       </div>
-
-      <form id="needhelp-form" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-800" onsubmit="handleNeedHelpSubmit(event)">
-        <div class="col-span-1">
-          <label class="block mb-1 font-semibold" data-key="form_label_fullname">Full name</label>
-          <input data-key-placeholder="form_ph_fullname" id="fullName" type="text" required class="w-full p-3 rounded-lg border border-gray-200" placeholder="Your name">
-        </div>
-
-        <div class="col-span-1">
-          <label class="block mb-1 font-semibold" data-key="form_label_hotel">Hotel / Company</label>
-          <input data-key-placeholder="form_ph_hotel" id="hotelName" type="text" class="w-full p-3 rounded-lg border border-gray-200" placeholder="Hotel name">
-        </div>
-
-        <div>
-          <label class="block mb-1 font-semibold" data-key="form_label_role">Role</label>
-          <input data-key-placeholder="form_ph_role" id="role" type="text" class="w-full p-3 rounded-lg border border-gray-200" placeholder="Your role">
-        </div>
-
-        <div>
-          <label class="block mb-1 font-semibold" data-key="form_label_email">Email</label>
-          <input data-key-placeholder="form_ph_email" id="email" type="email" required class="w-full p-3 rounded-lg border border-gray-200" placeholder="you@company.com">
-        </div>
-
-        <div>
-          <label class="block mb-1 font-semibold" data-key="form_label_phone">Phone</label>
-          <input data-key-placeholder="form_ph_phone" id="phone" type="tel" class="w-full p-3 rounded-lg border border-gray-200" placeholder="+51 9 123 45678">
-        </div>
-
-        <div>
-          <label class="block mb-1 font-semibold" data-key="form_label_interest">Area of interest</label>
-          <select id="interest" data-key-value="form_option_select" class="w-full p-3 rounded-lg border border-gray-200">
-            <option value="pms" data-key="form_option_pms">PMS</option>
-            <option value="guest_app" data-key="form_option_guest_app">Guest App</option>
-            <option value="iot" data-key="form_option_iot">IoT / Smart Rooms</option>
-            <option value="financial" data-key="form_option_financial">Financial & Reports</option>
-            <option value="other" data-key="form_option_other">Other</option>
-          </select>
-        </div>
-
-        <div class="md:col-span-2">
-          <label class="block mb-1 font-semibold" data-key="form_label_message">Message</label>
-          <textarea data-key-placeholder="form_ph_message" id="message" rows="5" class="w-full p-3 rounded-lg border border-gray-200" placeholder="Tell us what you need..."></textarea>
-        </div>
-
-        <div class="md:col-span-2 flex items-center justify-between mt-2">
-          <div class="text-sm text-white/80" data-key="form_privacy_text">
-            We will contact you shortly. Your data is safe with us.
-          </div>
-          <button type="submit" class="bg-white text-[--primary-blue] font-bold py-3 px-6 rounded-full shadow-md" data-key="form_submit_btn" onclick="window.location.href='https://smartstay-3cffc.web.app/register'">Request info</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="products-view" class="page-view hidden">
-        <div class="products-hero pt-32 pb-24 text-center text-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-brand font-bold mb-4" data-key="products_hero_title">
-                    Our Products: Technology that Transforms Hotel Management
-                </h2>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300" data-key="products_hero_subtitle">
-                    From reservations to smart experiences, all in one place.
-                </p>
-                <a href="#" class="cta-button text-white font-bold py-3 px-8 rounded-full uppercase font-body tracking-wider" data-key="products_hero_cta">
-                    Download Brochure
-                </a>
-            </div>
-        </div>
-        <div class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <p class="max-w-3xl mx-auto text-gray-700 text-lg mb-12" data-key="products_intro">
-                    Smart Stay offers a modular ecosystem, divided into key areas of hotel management. You can choose exactly what your hotel needs, or integrate them all to get a complete solution.
-                </p>
-                <div class="grid md:grid-cols-2 gap-8 text-left">
-                    <div class="feature-card text-white p-8 rounded-xl shadow-lg">
-                        <i data-lucide="building" class="w-12 h-12 mb-4 text-[--accent-green]"></i>
-                        <h3 class="text-2xl font-brand font-bold mb-4" data-key="product1_title">
-                            Hotel Management
-                        </h3>
-                        <ul class="space-y-3 font-light list-disc list-inside">
-                            <li data-key="product1_feat1">
-                                PMS (Property Management System): Control of reservations, rooms, check-in/out.
-                            </li>
-                            <li data-key="product1_feat2">
-                                Channel Manager: Synchronization with Booking, Expedia, Airbnb.
-                            </li>
-                            <li data-key="product1_feat3">
-                                Web Booking Engine: Direct reservations from the hotel's website.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="feature-card text-white p-8 rounded-xl shadow-lg">
-                        <i data-lucide="smartphone" class="w-12 h-12 mb-4 text-[--accent-green]"></i>
-                        <h3 class="text-2xl font-brand font-bold mb-4" data-key="product2_title">
-                            Guest Experience
-                        </h3>
-                        <ul class="space-y-3 font-light list-disc list-inside">
-                            <li data-key="product2_feat1">
-                                Smart Room Control (IoT): Control of lights, air, TV from mobile.
-                            </li>
-                            <li data-key="product2_feat2">
-                                App for Guests: Online check-in, room service, requests.
-                            </li>
-                            <li data-key="product2_feat3">
-                                Feedback and Surveys: Real-time opinions with AI analytics.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="feature-card text-white p-8 rounded-xl shadow-lg">
-                        <i data-lucide="dollar-sign" class="w-12 h-12 mb-4 text-[--accent-green]"></i>
-                        <h3 class="text-2xl font-brand font-bold mb-4" data-key="product3_title">
-                            Financial & Operational
-                        </h3>
-                        <ul class="space-y-3 font-light list-disc list-inside">
-                            <li data-key="product3_feat1">
-                                Financial Reports: Dashboard with revenue and expense metrics.
-                            </li>
-                            <li data-key="product3_feat2">
-                                Payment Management: Digital cards, e-wallets, electronic invoicing.
-                            </li>
-                            <li data-key="product3_feat3">
-                                Inventory and Housekeeping: Supply management, cleaning, maintenance.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="feature-card text-white p-8 rounded-xl shadow-lg">
-                        <i data-lucide="shield" class="w-12 h-12 mb-4 text-[--accent-green]"></i>
-                        <h3 class="text-2xl font-brand font-bold mb-4" data-key="product4_title">
-                            Security & Support
-                        </h3>
-                        <ul class="space-y-3 font-light list-disc list-inside">
-                            <li data-key="product4_feat1">
-                                Access Control: Digital or NFC keys for guests and staff.
-                            </li>
-                            <li data-key="product4_feat2">
-                                24/7 Support & Training: Assistance for staff and continuous training.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="solutions-view" class="page-view hidden">
-        <div class="solutions-hero">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-brand font-bold text-[--primary-blue] mb-4" data-key="solutions_title">
-                    Solutions adapted to every type of property
-                </h2>
-                <a href="#" class="text-[--primary-blue] underline font-semibold text-lg hover:text-[--accent-green] transition-colors duration-300" data-key="solutions_cta">
-                    See our packs:
-                </a>
-            </div>
-        </div>
-
-        <div class="pb-16 md:pb-20">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 gap-12">
-
-                    <div class="solution-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center">
-                        <div class="md:w-2/3">
-                            <h3 class="text-2xl font-brand font-bold mb-3 text-[--primary-blue]" data-key="solutions_pack1_title">Boutique Hotels</h3>
-                            <p class="text-gray-700 mb-4 text-base" data-key="solutions_pack1_desc">
-                                Ideal for small hotels seeking personalization.<br>Includes products:
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 mb-6 space-y-1 text-sm">
-                                <li data-key="solutions_pack1_li1">PMS</li>
-                                <li data-key="solutions_pack1_li2">Web Booking Engine</li>
-                                <li data-key="solutions_pack1_li3">Basic Financial Reports</li>
-                                <li data-key="solutions_pack1_li4">Guest App</li>
-                                <li data-key="solutions_pack1_li5">Feedback & Surveys</li>
-                            </ul>
-                            <a href="#" class="cta-button text-white font-bold py-3 px-6 rounded-full uppercase font-body tracking-wider text-sm" data-key="solutions_pack1_btn">
-                                Download Brochure
-                            </a>
-                        </div>
-                        <div class="md:w-1/3 flex justify-center items-center">
-                            <img src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?q=80&w=2070&auto=format&fit=crop" alt="Luxury boutique hotel pool" class="rounded-xl shadow-md">
-                        </div>
-                    </div>
-
-                    <div class="solution-card p-6 md:p-8 flex flex-col md:flex-row-reverse gap-6 items-center reverse-layout">
-                        <div class="md:w-2/3">
-                            <h3 class="text-2xl font-brand font-bold mb-3 text-[--primary-blue]" data-key="solutions_pack2_title">Hotel Chains</h3>
-                            <p class="text-gray-700 mb-4 text-base" data-key="solutions_pack2_desc">
-                                Designed for large groups with multiple locations.<br>Includes products:
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 mb-6 space-y-1 text-sm">
-                                <li data-key="solutions_pack2_li1">Advanced PMS</li>
-                                <li data-key="solutions_pack2_li2">Channel Manager</li>
-                                <li data-key="solutions_pack2_li3">Comprehensive Financial Reports</li>
-                                <li data-key="solutions_pack2_li4">Inventory & Housekeeping</li>
-                                <li data-key="solutions_pack2_li5">Access Control</li>
-                                <li data-key="solutions_pack2_li6">Smart Room Control (IoT)</li>
-                                <li data-key="solutions_pack2_li7">Advanced Analytics</li>
-                            </ul>
-                            <a href="#" class="bg-[--accent-green] hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-full uppercase font-body tracking-wider text-sm transition-all duration-300 hover:shadow-lg" data-key="solutions_pack2_btn">
-                                Download Brochure
-                            </a>
-                        </div>
-                        <div class="md:w-1/3 flex justify-center items-center">
-                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop" alt="Aerial view of a large hotel resort" class="rounded-xl shadow-md">
-                        </div>
-                    </div>
-
-                    <div class="solution-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center">
-                        <div class="md:w-2/3">
-                            <h3 class="text-2xl font-brand font-bold mb-3 text-[--primary-blue]" data-key="solutions_pack3_title">Alternative Accommodations</h3>
-                            <p class="text-gray-700 mb-4 text-base" data-key="solutions_pack3_desc">
-                                For small and flexible businesses.<br>Includes products:
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 mb-6 space-y-1 text-sm">
-                                <li data-key="solutions_pack3_li1">Web Booking Engine</li>
-                                <li data-key="solutions_pack3_li2">Payment Management</li>
-                                <li data-key="solutions_pack3_li3">Feedback & Surveys</li>
-                                <li data-key="solutions_pack3_li4">Guest App</li>
-                                <li data-key="solutions_pack3_li5">24/7 Support</li>
-                            </ul>
-                            <a href="#" class="bg-[--primary-blue] hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-full uppercase font-body tracking-wider text-sm transition-all duration-300 hover:shadow-lg" data-key="solutions_pack3_btn">
-                                Download Brochure
-                            </a>
-                        </div>
-                        <div class="md:w-1/3 flex justify-center items-center">
-                            <img src="https://images.unsplash.com/photo-1583878594798-c31409c8ab4a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Modern wooden cabin in a forest" class="rounded-xl shadow-md">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- === PRICING PAGE  === -->
-
-    <section id="pricing-view" class="page-view hidden">
-        <div class="pricing-hero pt-32 pb-24 text-center text-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-brand font-bold mb-4" data-key="pricing_hero_title">
-                    Our Prices and Plans
-                </h2>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300" data-key="pricing_hero_subtitle">
-                    Designed to fit your needs
-                </p>
-            </div>
-        </div>
-
-        <div class="py-16 md:py-20 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="pricing-table-container">
-                    <div class="pricing-table-grid pricing-header">
-                        <div class="pricing-cell" data-key="pricing_header_category">Category</div>
-                        <div class="pricing-cell hide-on-mobile" data-key="pricing_header_feature">Product / Functionality</div>
-                        <div class="pricing-cell hide-on-mobile" data-key="pricing_header_normal">Normal Plan</div>
-                        <div class="pricing-cell" data-key="pricing_header_plus">Plus Plan</div>
-                    </div>
-
-                    <div class="pricing-table-grid">
-                        <div class="pricing-cell category-cell" style="grid-row: span 3;">
-                            <span data-key="pricing_cat_hotel">Hotel Management</span>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_pms">PMS (Property Management System)</span>
-                                <small class="feature-description" data-key="pricing_feat_pms_desc">Reservation, room, check-in/out management.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_channel">Channel Manager</span>
-                                <small class="feature-description" data-key="pricing_feat_channel_desc">Sync with Booking, Expedia, Airbnb.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_booking_engine">Web Booking Engine</span>
-                                <small class="feature-description" data-key="pricing_feat_booking_engine_desc">Direct reservations from the hotel's website.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell category-cell" style="grid-row: span 3;">
-                            <span data-key="pricing_cat_guest">Guest Experience</span>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_smart_room">Smart Room Control (IoT)</span>
-                                <small class="feature-description" data-key="pricing_feat_smart_room_desc">Control lights, air, TV, and curtains.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_addon">Add-on (+$50/mo)</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_guest_app">App for Guests</span>
-                                <small class="feature-description" data-key="pricing_feat_guest_app_desc">Online check-in, room service, requests.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_addon">Add-on (+$20/mo)</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_feedback">Feedback & Digital Surveys</span>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_addon">Add-on (+$15/mo)</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell category-cell" style="grid-row: span 3;">
-                            <span data-key="pricing_cat_financial">Financial & Operational</span>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_reports">Financial Reports</span>
-                                <small class="feature-description" data-key="pricing_feat_reports_desc">Dashboard with revenue and expenses.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_addon">Add-on (+$40/mo)</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_payments">Payment Management</span>
-                                <small class="feature-description" data-key="pricing_feat_payments_desc">Cards, e-wallets, electronic invoicing.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_addon">Add-on (+$30/mo)</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_inventory">Inventory & Housekeeping</span>
-                                <small class="feature-description" data-key="pricing_feat_inventory_desc">Supply management, cleaning, maintenance.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_addon">Add-on (+$25/mo)</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell category-cell" style="grid-row: span 2;">
-                            <span data-key="pricing_cat_security">Security & Support</span>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_access">Access Control</span>
-                                <small class="feature-description" data-key="pricing_feat_access_desc">Digital or NFC keys.</small>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_addon">Add-on (+$30/mo)</span></div>
-                        <div class="pricing-cell plan-plus-col"><i data-lucide="check" class="checkmark-icon"></i> <span data-key="pricing_included">Included</span></div>
-
-                        <div class="pricing-cell hide-on-mobile">
-                            <div>
-                                <span data-key="pricing_feat_support">24/7 Support</span>
-                            </div>
-                        </div>
-                        <div class="pricing-cell hide-on-mobile"><span data-key="pricing_support_basic">Basic (email & chat)</span></div>
-                        <div class="pricing-cell plan-plus-col"><span data-key="pricing_support_premium">Premium (phone + personalized onboarding)</span></div>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <i data-lucide="arrow-down-circle" class="w-10 h-10 text-gray-400 mx-auto"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- === SUCCESS STORIES PAGE === -->
-    <section id="success-stories-view" class="page-view hidden">
-        <div class="success-hero pt-32 pb-24 text-center">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-brand font-bold text-[--primary-blue] mb-4" data-key="success_hero_title">
-                    Hotel Success Stories with SMARTSTAY
-                </h2>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-700" data-key="success_hero_subtitle">
-                    What do they and their guests say?
-                </p>
-            </div>
-        </div>
-
-        <div class="py-16 md:py-20 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 gap-12">
-                    <div class="story-card">
-                        <h3 class="text-2xl md:text-3xl font-brand font-bold text-center" data-key="success_story1_title">Hotel Boutique "Andes View" - Cusco</h3>
-                        <img src="https://i.imgur.com/your-logo-url.png" alt="Andes View Logo" class="story-logo">
-                        <div class="main-testimonial">
-                            <p data-key="success_story1_main_quote">"Before, we had to use three different systems for reservations, housekeeping, and billing. With Smart Stay, everything is integrated, and now we dedicate more time to our guests and less to administration."</p>
-                            <p class="main-testimonial-author" data-key="success_story1_main_author">General Manager</p>
-                        </div>
-                        <div class="guest-testimonial">
-                            <span class="font-bold text-lg" data-key="success_guest_title">Their guest:</span>
-                            <div class="guest-testimonial-bubble" data-key="success_story1_guest_quote">
-                                "I checked in from my phone and by the time I arrived, the digital key was ready. Everything was quick and seamless, I loved it."
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="story-card">
-                        <h3 class="text-2xl md:text-3xl font-brand font-bold text-center" data-key="success_story2_title">Medium Hotel "Costa Dorada" - Lima</h3>
-                        <img src="https://i.imgur.com/your-logo-url-2.png" alt="Costa Dorada Logo" class="story-logo">
-                        <div class="main-testimonial">
-                            <p data-key="success_story2_main_quote">"The guest app revolutionized our service. Requests arrive in real-time and the team responds faster. Our clients value this efficiency very much."</p>
-                            <p class="main-testimonial-author" data-key="success_story2_main_author">Operations Manager</p>
-                        </div>
-                        <div class="guest-testimonial">
-                            <span class="font-bold text-lg" data-key="success_guest_title">Their guest:</span>
-                            <div class="guest-testimonial-bubble" data-key="success_story2_guest_quote">
-                                "I was able to order room service from the app and even schedule my room cleaning for a time that was convenient for me. I felt the hotel adapted to me."
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="story-card">
-                        <h3 class="text-2xl md:text-3xl font-brand font-bold text-center" data-key="success_story3_title">Chain "Sunset Resort"</h3>
-                        <img src="https://i.imgur.com/your-logo-url-3.png" alt="Sunset Resort Logo" class="story-logo">
-                        <div class="main-testimonial">
-                            <p data-key="success_story3_main_quote">"What surprised us the most was the speed of implementation. In less than two months, we had the system running in all our hotels and the staff trained."</p>
-                            <p class="main-testimonial-author" data-key="success_story3_main_author">Technology Director</p>
-                        </div>
-                        <div class="guest-testimonial">
-                            <span class="font-bold text-lg" data-key="success_guest_title">Their guest:</span>
-                            <div class="guest-testimonial-bubble" data-key="success_story3_guest_quote">
-                                "I was impressed to be able to control the lights, air, and curtains from my phone. It was like being in a smart hotel, much more comfortable than other places I've stayed."
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- === SUCCESS STORIES PAGE STYLING === -->
-    <section id="resources-view" class="page-view hidden">
-        <div class="resources-hero pt-32 pb-24 text-center text-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-brand font-bold" data-key="resources_hero_title">
-                    Product Documentation
-                </h2>
-            </div>
-        </div>
-
-        <div class="py-16 md:py-20 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="carousel-wrapper">
-                    <div id="doc-carousel" class="carousel-track">
-                        <div class="doc-card">
-                            <div>
-                                <h3 class="font-brand font-bold text-xl mb-2" data-key="resources_doc1_title">PMS (Property Management System)</h3>
-                                <p class="text-sm text-gray-300 mb-4" data-key="resources_doc1_desc">User manual for reservations, check-in/out, and initial setup.</p>
-                            </div>
-                            <a href="#" class="cta-button text-white text-sm font-bold py-2 px-5 rounded-full" data-key="resources_doc_btn">Download</a>
-                        </div>
-                        <div class="doc-card">
-                            <div>
-                                <h3 class="font-brand font-bold text-xl mb-2" data-key="resources_doc2_title">Channel Manager</h3>
-                                <p class="text-sm text-gray-300 mb-4" data-key="resources_doc2_desc">Guide to connect and sync with Booking, Expedia, Airbnb.</p>
-                            </div>
-                            <a href="#" class="cta-button text-white text-sm font-bold py-2 px-5 rounded-full" data-key="resources_doc_btn">Download</a>
-                        </div>
-                        <div class="doc-card">
-                            <div>
-                                <h3 class="font-brand font-bold text-xl mb-2" data-key="resources_doc3_title">Financial Management</h3>
-                                <p class="text-sm text-gray-300 mb-4" data-key="resources_doc3_desc">Reports, invoices, and digital payment management.</p>
-                            </div>
-                            <a href="#" class="cta-button text-white text-sm font-bold py-2 px-5 rounded-full" data-key="resources_doc_btn">Download</a>
-                        </div>
-                        <div class="doc-card">
-                            <div>
-                                <h3 class="font-brand font-bold text-xl mb-2">Guest App Guide</h3>
-                                <p class="text-sm text-gray-300 mb-4">Instructions for guests on using the mobile application.</p>
-                            </div>
-                            <a href="#" class="cta-button text-white text-sm font-bold py-2 px-5 rounded-full">Download</a>
-                        </div>
-                    </div>
-                    <div class="carousel-arrow left" onclick="scrollCarousel('doc-carousel', 'left')"><i data-lucide="chevron-left"></i></div>
-                    <div class="carousel-arrow right" onclick="scrollCarousel('doc-carousel', 'right')"><i data-lucide="chevron-right"></i></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="py-16 md:py-20 text-center bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-brand font-bold text-[--primary-blue] mb-8" data-key="resources_video_title">
-                    Video Demo
-                </h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/qemqQHaeCYo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="blogs-hero py-16 md:py-20 text-center text-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-brand font-bold mb-8" data-key="resources_blog_title">
-                    Blogs and News
-                </h2>
-                <div class="carousel-wrapper">
-                    <div id="blog-carousel" class="carousel-track">
-                        <div class="blog-card">
-                            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop" alt="Guest Experience">
-                            <div class="p-6">
-                                <h3 class="font-brand font-bold text-xl mb-2" data-key="resources_blog1_title">How Tech AI is Transforming the Guest Experience</h3>
-                                <a href="#" class="blog-button" data-key="resources_blog_btn">Visit</a>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1925&auto-format&fit=crop" alt="Smart Hotels">
-                            <div class="p-6">
-                                <h3 class="font-brand font-bold text-xl mb-2" data-key="resources_blog2_title">Smart Hotels: Trends and Tech Solutions</h3>
-                                <a href="#" class="blog-button" data-key="resources_blog_btn">Visit</a>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <img src="https://images.unsplash.com/photo-1556745753-b2904692b3cd?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hotel Operations">
-                            <div class="p-6">
-                                <h3 class="font-brand font-bold text-xl mb-2" data-key="resources_blog3_title">Optimizing Hotel Operations</h3>
-                                <a href="#" class="blog-button" data-key="resources_blog_btn">Visit</a>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sustainability in Hotels">
-                            <div class="p-6">
-                                <h3 class="font-brand font-bold text-xl mb-2">Sustainability: The New Luxury in Hospitality</h3>
-                                <a href="#" class="blog-button">Visit</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-arrow left" onclick="scrollCarousel('blog-carousel', 'left')"><i data-lucide="chevron-left"></i></div>
-                    <div class="carousel-arrow right" onclick="scrollCarousel('blog-carousel', 'right')"><i data-lucide="chevron-right"></i></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer class="bg-[--primary-blue] text-white py-12">
-    <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8">
-        <div> <h3 class="font-brand font-bold text-lg mb-4">SMART STAY</h3> <p class="text-gray-400 text-sm" data-key="footer_tagline">Transforming hospitality with technology.</p> <div class="flex space-x-4 mt-4"> <a href="#"><i data-lucide="facebook" class="w-6 h-6 hover:text-orange-300"></i></a> <a href="#"><i data-lucide="instagram" class="w-6 h-6 hover:text-orange-300"></i></a> <a href="#"><i data-lucide="linkedin" class="w-6 h-6 hover:text-orange-300"></i></a> </div> </div>
-        <div> <h3 class="font-bold mb-4" data-key="footer_product">Product</h3> <ul class="space-y-2 text-gray-400"> <li><a href="#" xx="showView('products-view')" class="hover:underline" data-key="footer_pms">Hotel Management</a></li> <li><a href="#" xx="showView('products-view')" class="hover:underline" data-key="footer_guest_exp">Guest Experience</a></li> <li><a href="#" xx="showView('products-view')" class="hover:underline" data-key="footer_iot">IoT Control</a></li> </ul> </div>
-        <div> <h3 class="font-bold mb-4" data-key="footer_company">Company</h3> <ul class="space-y-2 text-gray-400"> <li><a href="#" xx="showView('home-view', '#about-us')" class="hover:underline" data-key="footer_about">About Us</a></li> <li><a href="#" class="hover:underline" data-key="footer_press">Press</a></li> <li><a href="#" class="hover:underline" data-key="footer_careers">Careers</a></li> </ul> </div>
-        <div> <h3 class="font-bold mb-4" data-key="footer_resources">Resources</h3> <ul class="space-y-2 text-gray-400"> <li><a href="#" class="hover:underline" data-key="footer_blog">Blog</a></li> <li><a href="#" class="hover:underline" data-key="footer_support">Support</a></li> <li><a href="#" class="hover:underline" data-key="footer_contact">Contact</a></li> </ul> </div>
-    </div>
-    <div class="container mx-auto px-6 mt-8 pt-6 border-t border-blue-800 text-center text-gray-500 text-sm">
-        <p data-key="footer_copyright">&copy; 2025 Smart Stay. All rights reserved. Developed with passion in Lima, Peru.</p>
-    </div>
-</footer>
-
-<script>document.addEventListener("DOMContentLoaded", () => {
-    lucide.createIcons();
-
-    const langToggleBtn = document.getElementById("lang-toggle-btn");
-    const langDropdown = document.getElementById("lang-dropdown");
-    const langEnBtn = document.getElementById("lang-en-btn");
-    const langEsBtn = document.getElementById("lang-es-btn");
-    const currentLangDisplay = document.getElementById("current-lang-display");
-
-    // 👉 Diccionario de traducciones
-    const translations = {
-        en: {
-            "nav_products": "Products",
-  "nav_solutions": "Solutions",
-  "nav_pricing": "Pricing",
-  "nav_success": "Success Stories",
-  "nav_resources": "Resources",
-  "nav_login": "Login",
-  "nav_register": "Register",
-  "hero_title": "Hotel Management + IoT: The Perfect Synergy",
-  "hero_subtitle": "Unleash your hotel's potential with an intelligent ecosystem that optimizes operations and revolutionizes the guest experience.",
-  "hero_cta": "Try DEMO",
-  "about_title": "Who We Are",
-  "about_description": "Smart Stay is a hotel management platform that integrates reservations, operations, and guest experience in one place. We digitize your hotel so you can save time, reduce costs, and offer a first-class service. We are a team of passionate software engineering students dedicated to revolutionizing the hospitality industry with technology.",
-  "team_title": "Meet the Team",
-  "team_member1_name": "Ítalo Verona Flores",
-  "team_member1_role": "Project Lead & Architect",
-  "team_member2_name": "Piero Sulca Sanchez",
-  "team_member2_role": "Frontend Developer",
-  "team_member3_name": "Alejandro Galindo Montero",
-  "team_member3_role": "Backend Developer",
-  "team_member4_name": "Samuel Bonifacio Jaramillo",
-  "team_member4_role": "Full Stack Developer & AI",
-  "team_member5_name": "Alberto Ponce Perales",
-  "team_member5_role": "QA & Testing",
-  "pilot_testimonial_text": "\"With Smart Stay, we have reduced reservation and check-in/check-out management time by 40%, optimizing our staff's work. The platform is intuitive, and support is always available when we need it.\"",
-  "pilot_testimonial_name": "Maria Lopez",
-  "pilot_testimonial_role": "General Manager, Hotel Sol y Mar",
-  "pilot_title": "Schedule Your Pilot Program",
-  "pilot_subtitle": "Discover firsthand how Smart Stay can transform your hotel. Let's start the conversation.",
-  "pilot_cta": "Book a Call",
-  "products_hero_title": "Our Products: Technology that Transforms Hotel Management",
-  "products_hero_subtitle": "From reservations to smart experiences, all in one place.",
-  "products_hero_cta": "Download Brochure",
-  "products_intro": "Smart Stay offers a modular ecosystem, divided into key areas of hotel management. You can choose exactly what your hotel needs, or integrate them all to get a complete solution.",
-  "product1_title": "Hotel Management",
-  "product1_feat1": "PMS (Property Management System): Control of reservations, rooms, check-in/out.",
-  "product1_feat2": "Channel Manager: Synchronization with Booking, Expedia, Airbnb.",
-  "product1_feat3": "Web Booking Engine: Direct reservations from the hotel's website.",
-  "product2_title": "Guest Experience",
-  "product2_feat1": "Smart Room Control (IoT): Control of lights, air, TV from mobile.",
-  "product2_feat2": "App for Guests: Online check-in, room service, requests.",
-  "product2_feat3": "Feedback and Surveys: Real-time opinions with AI analytics.",
-  "product3_title": "Financial & Operational",
-  "product3_feat1": "Financial Reports: Dashboard with revenue and expense metrics.",
-  "product3_feat2": "Payment Management: Digital cards, e-wallets, electronic invoicing.",
-  "product3_feat3": "Inventory and Housekeeping: Supply management, cleaning, maintenance.",
-  "product4_title": "Security & Support",
-  "product4_feat1": "Access Control: Digital or NFC keys for guests and staff.",
-  "product4_feat2": "24/7 Support & Training: Assistance for staff and continuous training.",
-  "solutions_title": "Solutions adapted to every type of property",
-  "solutions_cta": "See our packs:",
-  "solutions_pack1_title": "Boutique Hotels",
-  "solutions_pack1_desc": "Ideal for small hotels seeking personalization.<br>Includes products:",
-  "solutions_pack1_li1": "PMS",
-  "solutions_pack1_li2": "Web Booking Engine",
-  "solutions_pack1_li3": "Basic Financial Reports",
-  "solutions_pack1_li4": "Guest App",
-  "solutions_pack1_li5": "Feedback & Surveys",
-  "solutions_pack1_btn": "Download Brochure",
-  "solutions_pack2_title": "Hotel Chains",
-  "solutions_pack2_desc": "Designed for large groups with multiple locations.<br>Includes products:",
-  "solutions_pack2_li1": "Advanced PMS",
-  "solutions_pack2_li2": "Channel Manager",
-  "solutions_pack2_li3": "Comprehensive Financial Reports",
-  "solutions_pack2_li4": "Inventory & Housekeeping",
-  "solutions_pack2_li5": "Access Control",
-  "solutions_pack2_li6": "Smart Room Control (IoT)",
-  "solutions_pack2_li7": "Advanced Analytics",
-  "solutions_pack2_btn": "Download Brochure",
-  "solutions_pack3_title": "Alternative Accommodations",
-  "solutions_pack3_desc": "For small and flexible businesses.<br>Includes products:",
-  "solutions_pack3_li1": "Web Booking Engine",
-  "solutions_pack3_li2": "Payment Management",
-  "solutions_pack3_li3": "Feedback & Surveys",
-  "solutions_pack3_li4": "Guest App",
-  "solutions_pack3_li5": "24/7 Support",
-  "solutions_pack3_btn": "Download Brochure",
-  "footer_tagline": "Transforming hospitality with technology.",
-  "footer_product": "Product",
-  "footer_pms": "Hotel Management",
-  "footer_guest_exp": "Guest Experience",
-  "footer_iot": "IoT Control",
-  "footer_company": "Company",
-  "footer_about": "About Us",
-  "footer_press": "Press",
-  "footer_careers": "Careers",
-  "footer_resources": "Resources",
-  "footer_blog": "Blog",
-  "footer_support": "Support",
-  "footer_contact": "Contact",
-  "footer_copyright": "&copy; 2025 Smart Stay. All rights reserved. Developed with passion in Lima, Peru.",
-  "pricing_hero_title": "Our Prices and Plans",
-  "pricing_hero_subtitle": "Designed to fit your needs",
-  "pricing_header_category": "Category",
-  "pricing_header_feature": "Product / Functionality",
-  "pricing_header_normal": "Normal Plan",
-  "pricing_header_plus": "Plus Plan",
-  "pricing_included": "Included",
-  "pricing_addon": "Add-on",
-  "pricing_cat_hotel": "Hotel Management",
-  "pricing_feat_pms": "PMS (Property Management System)",
-  "pricing_feat_pms_desc": "Reservation, room, check-in/out management.",
-  "pricing_feat_channel": "Channel Manager",
-  "pricing_feat_channel_desc": "Sync with Booking, Expedia, Airbnb.",
-  "pricing_feat_booking_engine": "Web Booking Engine",
-  "pricing_feat_booking_engine_desc": "Direct reservations from the hotel's website.",
-  "pricing_cat_guest": "Guest Experience",
-  "pricing_feat_smart_room": "Smart Room Control (IoT)",
-  "pricing_feat_smart_room_desc": "Control lights, air, TV, and curtains.",
-  "pricing_feat_guest_app": "App for Guests",
-  "pricing_feat_guest_app_desc": "Online check-in, room service, requests.",
-  "pricing_feat_feedback": "Feedback & Digital Surveys",
-  "pricing_cat_financial": "Financial & Operational",
-  "pricing_feat_reports": "Financial Reports",
-  "pricing_feat_reports_desc": "Dashboard with revenue and expenses.",
-  "pricing_feat_payments": "Payment Management",
-  "pricing_feat_payments_desc": "Cards, e-wallets, electronic invoicing.",
-  "pricing_feat_inventory": "Inventory & Housekeeping",
-  "pricing_feat_inventory_desc": "Supply management, cleaning, maintenance.",
-  "pricing_cat_security": "Security & Support",
-  "pricing_feat_access": "Access Control",
-  "pricing_feat_access_desc": "Digital or NFC keys.",
-  "pricing_feat_support": "24/7 Support",
-  "pricing_support_basic": "Basic (email & chat)",
-  "pricing_support_premium": "Premium (phone + personalized onboarding)",
-  "success_hero_title": "Hotel Success Stories with SMARTSTAY",
-  "success_hero_subtitle": "What do they and their guests say?",
-  "success_guest_title": "Their guest:",
-  "success_story1_title": "Boutique Hotel \"Andes View\" - Cusco",
-  "success_story1_main_quote": "\"Before, we had to use three different systems for reservations, housekeeping, and billing. With Smart Stay, everything is integrated, and now we dedicate more time to our guests and less to administration.\"",
-  "success_story1_main_author": "General Manager",
-  "success_story1_guest_quote": "\"I checked in from my phone and by the time I arrived, the digital key was ready. Everything was quick and seamless, I loved it.\"",
-  "success_story2_title": "Medium Hotel \"Costa Dorada\" - Lima",
-  "success_story2_main_quote": "\"The guest app revolutionized our service. Requests arrive in real-time and the team responds faster. Our clients value this efficiency very much.\"",
-  "success_story2_main_author": "Operations Manager",
-  "success_story2_guest_quote": "\"I was able to order room service from the app and even schedule my room cleaning for a time that was convenient for me. I felt the hotel adapted to me.\"",
-  "success_story3_title": "Chain \"Sunset Resort\"",
-  "success_story3_main_quote": "\"What surprised us the most was the speed of implementation. In less than two months, we had the system running in all our hotels and the staff trained.\"",
-  "success_story3_main_author": "Technology Director",
-  "success_story3_guest_quote": "\"I was impressed to be able to control the lights, air, and curtains from my phone. It was like being in a smart hotel, much more comfortable than other places I've stayed.\"",
-  "resources_hero_title": "Product Documentation",
-  "resources_doc1_title": "PMS (Property Management System)",
-  "resources_doc1_desc": "User manual for reservations, check-in/out, and initial setup.",
-  "resources_doc2_title": "Channel Manager",
-  "resources_doc2_desc": "Guide to connect and sync with Booking, Expedia, Airbnb.",
-  "resources_doc3_title": "Financial Management",
-  "resources_doc3_desc": "Reports, invoices, and digital payment management.",
-  "resources_doc_btn": "Download",
-  "resources_video_title": "Video Demo",
-  "resources_blog_title": "Blogs and News",
-  "resources_blog1_title": "How Tech AI is Transforming the Guest Experience",
-  "resources_blog2_title": "Smart Hotels: Trends and Tech Solutions",
-  "resources_blog3_title": "Optimizing Hotel Operations",
-  "resources_blog_btn": "Visit",
-  "// --- TEAM VIDEO ---": {},
-  "team_video_title": "Meet Our Team in Action",
-  "team_video_ceo": "CEO - Italo Verona",
-  "team_video_cto": "CTO - Jane Doe",
-  "team_video_cmo": "CMO - Emily Martinez",
-
-  "// --- CONTACT FORM ---": {},
-  "contact_title": "Contact Us",
-  "contact_subtitle": "Tell us about your hotel and let’s build something amazing together.",
-  "form_name": "Full Name",
-  "form_hotel": "Hotel or Company",
-  "form_role": "Your Role",
-  "form_email": "Email Address",
-  "form_phone": "Phone Number",
-  "form_interest": "What are you interested in?",
-  "interest_cleaning": "Cleaning Management",
-  "interest_maintenance": "Maintenance Automation",
-  "interest_full": "Full SmartStay System",
-  "form_message": "Additional Message",
-  "form_send": "Send Message",
-  "team_video_title": "VIDEO ABOUT THE TEAM",
-    "pilot_testimonial_text": "With Smart Stay, we have reduced reservation and check-in/check-out management time by 40%, optimizing our staff's work. The platform is intuitive, and support is always available when we need it.",
-    "pilot_testimonial_name": "Maria Lopez",
-    "pilot_testimonial_role": "General Manager, Hotel Sol y Mar",
-    "needhelp_title": "Need help?",
-    "needhelp_subtitle": "Tell us about your hotel and what you need — we'll contact you with a tailored proposal.",
-    "form_label_fullname": "Full name",
-    "form_label_hotel": "Hotel / Company",
-    "form_label_role": "Role",
-    "form_label_email": "Email",
-    "form_label_phone": "Phone",
-    "form_label_interest": "Area of interest",
-    "form_label_message": "Message",
-    "form_ph_fullname": "Your name",
-    "form_ph_hotel": "Hotel name",
-    "form_ph_role": "Your role",
-    "form_ph_email": "you@company.com",
-    "form_ph_phone": "+51 9 123 45678",
-    "form_ph_message": "Tell us what you need...",
-    "form_option_pms": "PMS",
-    "form_option_guest_app": "Guest App",
-    "form_option_iot": "IoT / Smart Rooms",
-    "form_option_financial": "Financial & Reports",
-    "form_option_other": "Other",
-    "form_submit_btn": "Request info",
-    "form_privacy_text": "We will contact you shortly. Your data is safe with us."
-        },
-
-        es: {
-            "nav_products": "Productos",
-            "nav_solutions": "Soluciones",
-            "nav_pricing": "Precios",
-            "nav_success": "Casos de Éxito",
-            "nav_resources": "Recursos",
-    "//--- GLOBAL & NAVIGATION ---": {},
-  "nav_products": "Producto",
-  "nav_solutions": "Soluciones",
-  "nav_pricing": "Precios",
-  "nav_success": "Casos de Éxito",
-  "nav_resources": "Recursos",
-  "nav_login": "Iniciar Sesión",
-  "nav_register": "Registrarse",
-
-  "//--- HOME PAGE: HERO & ABOUT ---": {},
-  "hero_title": "Gestión Hotelera + IoT: La Sinergia Perfecta",
-  "hero_subtitle": "Desata el potencial de tu hotel con un ecosistema inteligente que optimiza la operación y revoluciona la experiencia de tus huéspedes.",
-  "hero_cta": "Probar DEMO",
-  "about_title": "Quiénes Somos",
-  "about_description": "Smart Stay es una plataforma de gestión hotelera que integra reservas, operaciones y experiencia del huésped en un solo lugar. Digitalizamos tu hotel para que ahorres tiempo, reduzcas costos y ofrezcas un servicio de primera. Somos un equipo de estudiantes de ingeniería de software apasionados por revolucionar la industria hotelera con tecnología.",
-  "team_title": "Conoce al Equipo",
-  "team_member1_name": "Ítalo Verona Flores",
-  "team_member1_role": "Líder de Proyecto y Arquitecto",
-  "team_member2_name": "Piero Sulca Sanchez",
-  "team_member2_role": "Desarrollador Frontend",
-  "team_member3_name": "Alejandro Galindo Montero",
-  "team_member3_role": "Desarrollador Backend",
-  "team_member4_name": "Samuel Bonifacio Jaramillo",
-  "team_member4_role": "Desarrollador Full Stack e IA",
-"team_member5_name": "Alberto Ponce Perales",
-  "team_member5_role": "QA y Testing",
-  "//--- HOME PAGE: PILOT & TESTIMONIAL ---": {},
-  "pilot_testimonial_text": "\"Con Smart Stay, hemos reducido el tiempo de gestión de reservas y check-in/check-out en un 40%, optimizando el trabajo de nuestro personal. La plataforma es intuitiva y el soporte está siempre disponible cuando lo necesitamos.\"",
-  "pilot_testimonial_name": "María López",
-  "pilot_testimonial_role": "Gerente General, Hotel Sol y Mar",
-  "pilot_title": "Agenda tu Programa Piloto",
-  "pilot_subtitle": "Descubre de primera mano cómo Smart Stay puede transformar tu hotel. Comencemos la conversación.",
-  "pilot_cta": "Reservar una Llamada",
-
-  "//--- PRODUCTS PAGE ---": {},
-  "products_hero_title": "Nuestros Productos: Tecnología que Transforma la Gestión Hotelera",
-  "products_hero_subtitle": "Desde reservas hasta experiencias inteligentes, todo en un solo lugar.",
-  "products_hero_cta": "Descargar Folleto",
-  "products_intro": "Smart Stay ofrece un ecosistema modular, dividido en áreas clave de la gestión hotelera. Puedes elegir exactamente lo que tu hotel necesita, o integrarlos todos para obtener una solución completa.",
-  "product1_title": "Gestión Hotelera",
-  "product1_feat1": "PMS (Property Management System): Control de reservas, habitaciones, check-in/out.",
-  "product1_feat2": "Channel Manager: Sincronización con Booking, Expedia, Airbnb.",
-  "product1_feat3": "Motor de Reservas Web: Reservas directas desde la web del hotel.",
-  "product2_title": "Experiencia del Huésped",
-  "product2_feat1": "Control de Habitación Inteligente (IoT): Control de luces, aire, TV desde el móvil.",
-  "product2_feat2": "App para Huéspedes: Check-in online, servicio de habitaciones, solicitudes.",
-  "product2_feat3": "Feedback y Encuestas: Opiniones en tiempo real con analítica IA.",
-  "product3_title": "Financiera y Operativa",
-  "product3_feat1": "Reportes Financieros: Panel con métricas de ingresos y gastos.",
-  "product3_feat2": "Gestión de Pagos: Tarjetas digitales, monederos electrónicos, facturación electrónica.",
-  "product3_feat3": "Inventario y Housekeeping: Gestión de suministros, limpieza, mantenimiento.",
-  "product4_title": "Seguridad y Soporte",
-  "product4_feat1": "Control de Accesos: Llaves digitales o NFC para huéspedes y personal.",
-  "product4_feat2": "Soporte y Capacitación 24/7: Asistencia al personal y formación continua.",
-
-  "//--- SOLUTIONS PAGE ---": {},
-  "solutions_title": "Soluciones adaptadas a cada tipo de establecimientos",
-  "solutions_cta": "Conoce nuestros packs:",
-  "solutions_pack1_title": "Hoteles Boutique",
-  "solutions_pack1_desc": "Ideal para hoteles pequeños que buscan personalización.<br>Incluye productos:",
-  "solutions_pack1_li1": "PMS",
-  "solutions_pack1_li2": "Motor de Reservas Web",
-  "solutions_pack1_li3": "Reportes Financieros básicos",
-  "solutions_pack1_li4": "App para Huéspedes",
-  "solutions_pack1_li5": "Feedback y Encuestas",
-  "solutions_pack1_btn": "Descargar Folleto",
-  "solutions_pack2_title": "Cadenas Hoteleras",
-  "solutions_pack2_desc": "Diseñado para grupos grandes con múltiples sedes.<br>Incluye productos:",
-  "solutions_pack2_li1": "PMS avanzado",
-  "solutions_pack2_li2": "Channel Manager",
-  "solutions_pack2_li3": "Reportes Financieros completos",
-  "solutions_pack2_li4": "Inventario y Housekeeping",
-  "solutions_pack2_li5": "Control de Accesos",
-  "solutions_pack2_li6": "Control de Habitación Inteligente (IoT)",
-  "solutions_pack2_li7": "Analítica avanzada",
-  "solutions_pack2_btn": "Descargar Folleto",
-  "solutions_pack3_title": "Alojamientos Alternativos",
-  "solutions_pack3_desc": "Para negocios pequeños y flexibles.<br>Incluye productos:",
-  "solutions_pack3_li1": "Motor de Reservas Web",
-  "solutions_pack3_li2": "Gestión de Pagos",
-  "solutions_pack3_li3": "Feedback y Encuestas",
-  "solutions_pack3_li4": "App para Huéspedes",
-  "solutions_pack3_li5": "Soporte 24/7",
-  "solutions_pack3_btn": "Descargar Folleto",
-
-  "//--- PRICING PAGE ---": {},
-  "pricing_hero_title": "Nuestros Precios y Planes",
-  "pricing_hero_subtitle": "Para que se adapte a tus necesidades",
-  "pricing_header_category": "Categoría",
-  "pricing_header_feature": "Producto / Funcionalidad",
-  "pricing_header_normal": "Plan Normal",
-  "pricing_header_plus": "Plan Plus",
-  "pricing_included": "Incluido",
-  "pricing_addon": "Add-on",
-  "pricing_cat_hotel": "Gestión Hotelera",
-  "pricing_feat_pms": "PMS (Property Management System)",
-  "pricing_feat_pms_desc": "Gestión de reservas, habitaciones, check-in/out.",
-  "pricing_feat_channel": "Channel Manager",
-  "pricing_feat_channel_desc": "Sincronización con Booking, Expedia, Airbnb.",
-  "pricing_feat_booking_engine": "Motor de Reservas Web",
-  "pricing_feat_booking_engine_desc": "Reservas directas desde la web del hotel.",
-  "pricing_cat_guest": "Experiencia del Huésped",
-  "pricing_feat_smart_room": "Smart Room Control (IoT)",
-  "pricing_feat_smart_room_desc": "Control de luces, aire, TV y cortinas.",
-  "pricing_feat_guest_app": "App para Huéspedes",
-  "pricing_feat_guest_app_desc": "Check-in online, room service, solicitudes.",
-  "pricing_feat_feedback": "Feedback y Encuestas Digitales",
-  "pricing_cat_financial": "Gestión Financiera y Operativa",
-  "pricing_feat_reports": "Reportes Financieros",
-  "pricing_feat_reports_desc": "Dashboard de ingresos y gastos.",
-  "pricing_feat_payments": "Gestión de Pagos",
-  "pricing_feat_payments_desc": "Tarjetas, billeteras digitales, facturación electrónica.",
-  "pricing_feat_inventory": "Inventario y Housekeeping",
-  "pricing_feat_inventory_desc": "Suministros, limpieza y mantenimiento.",
-  "pricing_cat_security": "Seguridad y Soporte",
-  "pricing_feat_access": "Control de Accesos",
-  "pricing_feat_access_desc": "Llaves digitales o NFC.",
-  "pricing_feat_support": "Soporte 24/7",
-  "pricing_support_basic": "Básico (email y chat)",
-  "pricing_support_premium": "Premium (teléfono + onboarding personalizado)",
-
-  "//--- SUCCESS STORIES PAGE ---": {},
-  "success_hero_title": "Casos de éxito de hoteles con SMARTSTAY",
-  "success_hero_subtitle": "¿Qué dicen ellos y sus huéspedes?",
-  "success_guest_title": "Su huésped:",
-  "success_story1_title": "Hotel Boutique \"Andes View\" - Cusco",
-  "success_story1_main_quote": "\"Antes teníamos que usar tres sistemas distintos para reservas, housekeeping y facturación. Con Smart Stay, todo está integrado, y ahora dedicamos más tiempo a los huéspedes y menos a la administración.\"",
-  "success_story1_main_author": "Gerente General",
-  "success_story1_guest_quote": "\"Hice el check-in desde mi celular y al llegar ya tenía la llave digital lista. Todo fue rápido y sin filas, me encantó.\"",
-  "success_story2_title": "Hotel mediano \"Costa Dorada\" - Lima",
-  "success_story2_main_quote": "\"La app para huéspedes revolucionó nuestro servicio. Las solicitudes llegan en tiempo real y el equipo responde más rápido. Nuestros clientes valoran mucho esta eficiencia.\"",
-  "success_story2_main_author": "Jefe de Operaciones",
-  "success_story2_guest_quote": "\"Pude pedir room service desde la app y hasta programar la limpieza de mi habitación a la hora que me convenía. Sentí que el hotel se adaptaba a mí.\"",
-  "success_story3_title": "Cadena \"Sunset Resort\"",
-  "success_story3_main_quote": "\"Lo que más nos sorprendió fue la rapidez de implementación. En menos de dos meses teníamos el sistema funcionando en todos nuestros hoteles y con el staff capacitado.\"",
-  "success_story3_main_author": "Director de Tecnología",
-  "success_story3_guest_quote": "\"Me impresionó poder controlar las luces, el aire y las cortinas desde mi celular. Fue como estar en un hotel inteligente, mucho más cómodo que en otros lugares donde he estado.\"",
-
-  "//--- RESOURCES PAGE ---": {},
-  "resources_hero_title": "Documentación de Productos",
-  "resources_doc1_title": "PMS (Property Management System)",
-  "resources_doc1_desc": "Manual de usuario para reservas, check-in/out y configuración inicial.",
-  "resources_doc2_title": "Channel Manager",
-  "resources_doc2_desc": "Guía para conectar y sincronizar con Booking, Expedia, Airbnb.",
-  "resources_doc3_title": "Gestión Financiera",
-  "resources_doc3_desc": "Reportes, facturas y gestión de pagos digitales.",
-  "resources_doc_btn": "Descargar",
-  "resources_video_title": "Video Demo",
-  "resources_blog_title": "Blogs y Noticias",
-  "resources_blog1_title": "Cómo la Inteligencia Tecnológica Está Transformando la Experiencia del Huésped",
-  "resources_blog2_title": "Hoteles Inteligentes: Tendencias y Soluciones Tecnológicas",
-  "resources_blog3_title": "Optimización de Operaciones Hoteleras",
-  "resources_blog_btn": "Visitar",
-
-  "//--- FOOTER ---": {},
-  "footer_tagline": "Transformando la hospitalidad con tecnología.",
-  "footer_product": "Producto",
-  "footer_pms": "Gestión Hotelera",
-  "footer_guest_exp": "Experiencia del Huésped",
-  "footer_iot": "Control IoT",
-  "footer_company": "Compañía",
-  "footer_about": "Acerca de Nosotros",
-  "footer_press": "Prensa",
-  "footer_careers": "Carreras",
-  "footer_resources": "Recursos",
-  "footer_blog": "Blog",
-  "footer_support": "Soporte",
-  "footer_contact": "Contacto",
-  "footer_copyright": "&copy; 2025 Smart Stay. Todos los derechos reservados. Desarrollado con pasión en Lima, Perú.",
-  "// --- VIDEO DEL EQUIPO ---": {},
-  "team_video_title": "Conoce a Nuestro Equipo en Acción",
-  "team_video_ceo": "CEO – Italo Verona",
-  "team_video_cto": "CTO – Jane Doe",
-  "team_video_cmo": "CMO – Emily Martinez",
-
-  "// --- FORMULARIO DE CONTACTO ---": {},
-  "contact_title": "Contáctanos",
-  "contact_subtitle": "Cuéntanos sobre tu hotel y construyamos algo increíble juntos.",
-  "form_name": "Nombre Completo",
-  "form_hotel": "Hotel o Empresa",
-  "form_role": "Tu Cargo",
-  "form_email": "Correo Electrónico",
-  "form_phone": "Número de Teléfono",
-  "form_interest": "¿Qué te interesa?",
-  "interest_cleaning": "Gestión de Limpieza",
-  "interest_maintenance": "Automatización de Mantenimiento",
-  "interest_full": "Sistema Completo SmartStay",
-  "form_message": "Mensaje Adicional",
-  "form_send": "Enviar Mensaje",
-     "team_video_title": "VIDEO ABOUT THE TEAM",
-    "pilot_testimonial_text": "Con Smart Stay hemos reducido el tiempo de gestión de reservas y de check-in/check-out en un 40%, optimizando el trabajo de nuestro personal. La plataforma es intuitiva y el soporte está siempre disponible cuando lo necesitamos.",
-    "pilot_testimonial_name": "María López",
-    "pilot_testimonial_role": "Gerente General, Hotel Sol y Mar",
-    "needhelp_title": "¿Necesitas ayuda?",
-    "needhelp_subtitle": "Cuéntanos sobre tu hotel y lo que necesitas — te contactaremos con una propuesta personalizada.",
-    "form_label_fullname": "Nombre completo",
-    "form_label_hotel": "Hotel / Empresa",
-    "form_label_role": "Cargo",
-    "form_label_email": "Correo",
-    "form_label_phone": "Teléfono",
-    "form_label_interest": "Área de interés",
-    "form_label_message": "Mensaje",
-    "form_ph_fullname": "Tu nombre",
-    "form_ph_hotel": "Nombre del hotel",
-    "form_ph_role": "Tu cargo",
-    "form_ph_email": "tú@empresa.com",
-    "form_ph_phone": "+51 9 123 45678",
-    "form_ph_message": "Cuéntanos qué necesitas...",
-    "form_option_pms": "PMS",
-    "form_option_guest_app": "App para Huéspedes",
-    "form_option_iot": "IoT / Habitaciones Inteligentes",
-    "form_option_financial": "Finanzas y Reportes",
-    "form_option_other": "Otro",
-    "form_submit_btn": "Solicitar información",
-    "form_privacy_text": "Te contactaremos pronto. Tus datos están seguros con nosotros."
-        }
-    };
-
-    // 👉 Mostrar / ocultar dropdown
-    langToggleBtn.addEventListener("click", () => {
-        langDropdown.classList.toggle("hidden");
-    });
-
-    // 👉 Función para traducir
-    function applyLanguage(lang) {
-        const dict = translations[lang];
-
-        document.querySelectorAll("[data-key]").forEach(el => {
-            const key = el.getAttribute("data-key");
-            if (dict[key]) {
-                el.textContent = dict[key];
-            }
-        });
-
-        currentLangDisplay.textContent = lang.toUpperCase();
-        langDropdown.classList.add("hidden");
-    }
-
-    // Botones
-    langEnBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        applyLanguage("en");
-    });
-
-    langEsBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        applyLanguage("es");
-    });
-});</script>
-<script>
-function showView(viewId) {
-    // Ocultar TODAS las vistas
-    document.querySelectorAll(".page-view").forEach(v => {
-        v.classList.add("hidden");
-    });
-
-    // Mostrar la vista seleccionada
-    const view = document.getElementById(viewId);
-    if (view) {
-        view.classList.remove("hidden");
-        // subir al inicio al cambiar vista
-        window.scrollTo(0, 0);
-    }
-}
-</script>
-
-</body>
+    </footer>
+  </body>
 </html>
