@@ -1,0 +1,19 @@
+node_modules/
+dist/
+dist-e2e/
+.vercel/
+
+# Local environment overrides (never commit real secrets)
+.env.local
+.env.*.local
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

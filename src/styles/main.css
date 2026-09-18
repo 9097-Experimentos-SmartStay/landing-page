@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+
+/* Brand tokens (Report, chapter 4.1 Style Guidelines). The "strong" variants are
+   darker shades used when white text sits on top, to meet WCAG AA contrast. */
+@theme {
+  --color-brand-blue: #2c3e91;
+  --color-brand-navy: #1b2660;
+  --color-brand-orange: #e67e22;
+  --color-brand-orange-strong: #b4560c;
+  --color-brand-green: #1abc9c;
+  --color-brand-green-strong: #0e7563;
+  --color-brand-beige: #f5f5dc;
+  --color-brand-gray: #bdc3c7;
+
+  --font-brand: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the sticky header. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-body text-slate-800 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-brand;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-orange;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-eyebrow {
+    @apply mb-2 text-sm font-semibold tracking-wider text-brand-green-strong uppercase;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-brand-blue md:text-4xl;
+  }
+
+  .section-lead {
+    @apply mt-4 max-w-3xl text-lg text-slate-600;
+  }
+
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-center font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply bg-brand-orange-strong text-white shadow-md hover:bg-[#9a4a0a];
+  }
+
+  .btn-secondary {
+    @apply bg-brand-blue text-white hover:bg-brand-navy;
+  }
+
+  .btn-outline {
+    @apply border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white;
+  }
+
+  .btn-ghost-light {
+    @apply border-2 border-white/70 text-white hover:bg-white/15;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white p-6 shadow-md ring-1 ring-slate-200;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .form-label {
+    @apply mb-1 block text-sm font-semibold text-slate-700;
+  }
+
+  .form-control {
+    @apply block min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30 focus:outline-none aria-invalid:border-red-600 aria-invalid:ring-red-600/20;
+  }
+
+  .form-error {
+    @apply mt-1 text-sm font-medium text-red-700;
+  }
+
+  .hero-bg {
+    background-image:
+      linear-gradient(rgb(15 23 42 / 0.78), rgb(27 38 96 / 0.85)),
+      url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1600&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+  }
+}
