@@ -14,6 +14,17 @@
 
   --font-brand: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Demo success: short progress bar before showing the scheduling calendar. */
+  --animate-progress: progress-fill 1.6s linear forwards;
+  @keyframes progress-fill {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
 }
 
 @layer base {

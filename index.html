@@ -631,7 +631,222 @@
         </div>
       </section>
 
-      <!-- DEMO_SECTION -->
+      <!-- ============ DEMO & CONTACT (US-27) ============ -->
+      <section id="demo" class="section bg-brand-navy text-white" aria-labelledby="demo-title">
+        <div class="container-page grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <p class="section-eyebrow text-brand-green" data-i18n="demo_eyebrow">Demo gratuita</p>
+            <h2 id="demo-title" class="text-3xl font-bold md:text-4xl" data-i18n="demo_title">
+              Descubre cómo SmartStay puede transformar tu hotel
+            </h2>
+            <p class="mt-4 text-lg text-slate-200" data-i18n="demo_lead">
+              Cuéntanos sobre tu alojamiento y agenda una llamada de 30 minutos con nuestro equipo.
+            </p>
+            <ol class="mt-8 space-y-4">
+              <li class="flex gap-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green font-bold text-brand-navy">1</span>
+                <span data-i18n="demo_step1">Completa el formulario: toma menos de un minuto.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green font-bold text-brand-navy">2</span>
+                <span data-i18n="demo_step2">Recibe la confirmación al instante en tu correo.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green font-bold text-brand-navy">3</span>
+                <span data-i18n="demo_step3">Elige el día y la hora de tu demo en nuestro calendario.</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="rounded-2xl bg-white p-5 text-slate-800 shadow-2xl sm:p-8">
+            <form id="demo-form" novalidate data-demo-form>
+              <h3 class="text-xl font-bold text-brand-blue" data-i18n="demo_form_title">Solicita tu demo</h3>
+              <p class="mt-1 text-sm text-slate-500" data-i18n="demo_form_required_hint">Los campos marcados con * son obligatorios.</p>
+
+              <div class="mt-4 rounded-lg p-3 text-sm" role="alert" data-demo-alert hidden></div>
+
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="demo-firstName" class="form-label"><span data-i18n="demo_field_firstName">Nombre</span> *</label>
+                  <input id="demo-firstName" name="firstName" type="text" class="form-control" autocomplete="given-name" required />
+                  <p id="demo-firstName-error" class="form-error" data-error-for="firstName" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-lastName" class="form-label"><span data-i18n="demo_field_lastName">Apellido</span> *</label>
+                  <input id="demo-lastName" name="lastName" type="text" class="form-control" autocomplete="family-name" required />
+                  <p id="demo-lastName-error" class="form-error" data-error-for="lastName" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-hotelName" class="form-label"><span data-i18n="demo_field_hotelName">Nombre del hotel</span> *</label>
+                  <input id="demo-hotelName" name="hotelName" type="text" class="form-control" autocomplete="organization" required />
+                  <p id="demo-hotelName-error" class="form-error" data-error-for="hotelName" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-jobTitle" class="form-label"><span data-i18n="demo_field_jobTitle">Cargo</span> *</label>
+                  <input id="demo-jobTitle" name="jobTitle" type="text" class="form-control" autocomplete="organization-title" required />
+                  <p id="demo-jobTitle-error" class="form-error" data-error-for="jobTitle" hidden></p>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="demo-email" class="form-label"><span data-i18n="demo_field_email">Email corporativo</span> *</label>
+                  <input
+                    id="demo-email"
+                    name="email"
+                    type="email"
+                    inputmode="email"
+                    class="form-control"
+                    autocomplete="email"
+                    placeholder="nombre@tuhotel.com"
+                    data-i18n-attr="placeholder:demo_placeholder_email"
+                    required
+                  />
+                  <p id="demo-email-error" class="form-error" data-error-for="email" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-accommodationType" class="form-label"><span data-i18n="demo_field_accommodationType">Tipo de alojamiento</span> *</label>
+                  <select id="demo-accommodationType" name="accommodationType" class="form-control" required>
+                    <option value="" data-i18n="demo_select_placeholder">Selecciona una opción</option>
+                    <option value="boutique" data-i18n="hotel_type_boutique">Hotel boutique</option>
+                    <option value="alternative" data-i18n="hotel_type_alternative">Alojamiento alternativo</option>
+                    <option value="chain" data-i18n="hotel_type_chain">Cadena hotelera</option>
+                  </select>
+                  <p id="demo-accommodationType-error" class="form-error" data-error-for="accommodationType" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-roomsRange" class="form-label"><span data-i18n="demo_field_roomsRange">Número de habitaciones</span> *</label>
+                  <select id="demo-roomsRange" name="roomsRange" class="form-control" required>
+                    <option value="" data-i18n="demo_select_placeholder">Selecciona una opción</option>
+                    <option value="1-10">1–10</option>
+                    <option value="11-30">11–30</option>
+                    <option value="31-60">31–60</option>
+                    <option value="60+" data-i18n="demo_rooms_more_than_60">Más de 60</option>
+                  </select>
+                  <p id="demo-roomsRange-error" class="form-error" data-error-for="roomsRange" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-referralSource" class="form-label"><span data-i18n="demo_field_referralSource">¿Cómo nos conociste?</span> *</label>
+                  <select id="demo-referralSource" name="referralSource" class="form-control" required>
+                    <option value="" data-i18n="demo_select_placeholder">Selecciona una opción</option>
+                    <option value="search" data-i18n="demo_referral_search">Buscador</option>
+                    <option value="social" data-i18n="demo_referral_social">Redes sociales</option>
+                    <option value="referral" data-i18n="demo_referral_referral">Recomendación</option>
+                    <option value="event" data-i18n="demo_referral_event">Evento</option>
+                    <option value="other" data-i18n="demo_referral_other">Otro</option>
+                  </select>
+                  <p id="demo-referralSource-error" class="form-error" data-error-for="referralSource" hidden></p>
+                </div>
+                <div>
+                  <label for="demo-phone" class="form-label">
+                    <span data-i18n="demo_field_phone">Teléfono</span>
+                    <span class="font-normal text-slate-500" data-i18n="demo_optional">(opcional)</span>
+                  </label>
+                  <input
+                    id="demo-phone"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    class="form-control"
+                    autocomplete="tel"
+                    maxlength="22"
+                    placeholder="+51 987 654 321"
+                  />
+                  <p id="demo-phone-error" class="form-error" data-error-for="phone" hidden></p>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="demo-message" class="form-label">
+                    <span data-i18n="demo_field_message">¿Algo más que debamos saber?</span>
+                    <span class="font-normal text-slate-500" data-i18n="demo_optional">(opcional)</span>
+                  </label>
+                  <textarea id="demo-message" name="message" rows="4" class="form-control" maxlength="500" aria-describedby="demo-message-counter"></textarea>
+                  <div class="flex items-start justify-between gap-2">
+                    <p id="demo-message-error" class="form-error" data-error-for="message" hidden></p>
+                    <p id="demo-message-counter" class="ml-auto mt-1 text-xs text-slate-500" aria-live="polite" data-message-counter>0/500</p>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary mt-6 w-full" data-demo-submit>
+                <span class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" aria-hidden="true" data-demo-spinner></span>
+                <span data-demo-submit-label data-i18n="demo_submit">Solicitar demo</span>
+              </button>
+              <p class="mt-3 text-center text-xs text-slate-500" data-i18n="demo_privacy">
+                Usaremos tus datos solo para contactarte sobre SmartStay.
+              </p>
+            </form>
+
+            <div data-demo-success tabindex="-1" hidden>
+              <span class="chip bg-emerald-100 text-emerald-800">
+                <i data-lucide="circle-check" class="h-4 w-4"></i><span data-i18n="demo_success_badge">Solicitud enviada</span>
+              </span>
+              <h3 class="mt-3 text-2xl font-bold text-brand-blue" data-demo-success-title></h3>
+              <p class="mt-2 text-slate-600" data-demo-success-detail></p>
+              <p class="mt-1 text-sm text-slate-500" data-demo-success-reference></p>
+
+              <div class="mt-6" role="status" data-demo-redirecting>
+                <p class="font-semibold" data-i18n="demo_redirecting">Te llevamos a agendar tu llamada…</p>
+                <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-0 rounded-full bg-brand-green-strong animate-progress"></div>
+                </div>
+              </div>
+
+              <div class="mt-6" data-demo-scheduling hidden>
+                <h4 class="text-lg font-bold" data-i18n="demo_schedule_title">Agenda tu llamada</h4>
+                <p class="mt-1 text-sm text-slate-600" data-i18n="demo_schedule_lead">Elige el día y la hora que prefieras. Ya completamos tu nombre y correo.</p>
+                <iframe
+                  class="mt-4 h-[640px] w-full rounded-lg border border-slate-200"
+                  title="Calendario para agendar la demo"
+                  data-i18n-attr="title:demo_schedule_iframe_title"
+                  loading="lazy"
+                  data-cal-embed
+                ></iframe>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue underline" target="_blank" rel="noopener noreferrer" data-cal-link>
+                  <span data-i18n="demo_schedule_open_new_tab">Abrir el calendario en una pestaña nueva</span>
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact" class="container-page mt-16" aria-labelledby="contact-title">
+          <h3 id="contact-title" class="text-2xl font-bold" data-i18n="contact_title">¿Prefieres hablar directo con ventas?</h3>
+          <p class="mt-2 text-slate-300" data-i18n="contact_lead">Nuestro equipo comercial te responde por el canal que prefieras.</p>
+          <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+            <li>
+              <a href="tel:+51900000000" class="flex min-h-11 items-center gap-3 rounded-xl bg-white/10 p-4 hover:bg-white/15" data-contact="phone">
+                <i data-lucide="phone" class="h-6 w-6 shrink-0 text-brand-green"></i>
+                <span>
+                  <span class="block text-sm text-slate-300" data-i18n="contact_phone">Teléfono</span>
+                  <span class="block font-semibold" data-contact-value>+51 900 000 000</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:ventas@smartstay.example" class="flex min-h-11 items-center gap-3 rounded-xl bg-white/10 p-4 hover:bg-white/15" data-contact="email">
+                <i data-lucide="mail" class="h-6 w-6 shrink-0 text-brand-green"></i>
+                <span class="min-w-0">
+                  <span class="block text-sm text-slate-300" data-i18n="contact_email">Correo</span>
+                  <span class="block font-semibold break-all" data-contact-value>ventas@smartstay.example</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/51900000000"
+                class="flex min-h-11 items-center gap-3 rounded-xl bg-white/10 p-4 hover:bg-white/15"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-contact="whatsapp"
+              >
+                <i data-lucide="message-circle" class="h-6 w-6 shrink-0 text-brand-green"></i>
+                <span>
+                  <span class="block text-sm text-slate-300">WhatsApp</span>
+                  <span class="block font-semibold" data-i18n="contact_whatsapp_cta">Escríbenos</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
       <!-- ABOUT_SECTION -->
     </main>

@@ -4,7 +4,7 @@
  */
 const listeners = new Set();
 
-/** @param {(prefill: { hotelType?: string, message?: string }) => void} listener */
+/** @param {(prefill: { accommodationType?: string, message?: string }) => void} listener */
 export function onDemoPrefill(listener) {
   listeners.add(listener);
   return () => listeners.delete(listener);

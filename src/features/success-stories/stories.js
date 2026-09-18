@@ -9,7 +9,9 @@
  * authorised cases (set `illustrative: false`) as soon as they exist.
  */
 
-export const HOTEL_TYPES = Object.freeze(['boutique', 'alternative', 'chain']);
+import { ACCOMMODATION_TYPES } from '../../domain.js';
+
+export const HOTEL_TYPES = ACCOMMODATION_TYPES;
 
 /** @typedef {'boutique' | 'alternative' | 'chain'} HotelType */
 

@@ -102,7 +102,7 @@ function requestInformation(storyId) {
   if (!story) return;
   const content = storyContent(story, getLanguage());
   requestDemoPrefill({
-    hotelType: story.hotelType,
+    accommodationType: story.hotelType,
     message: t('stories_request_message', { title: content.title, location: content.location }),
   });
 }

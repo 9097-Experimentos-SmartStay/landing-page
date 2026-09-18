@@ -4,6 +4,8 @@ import { renderIcons } from './lib/icons.js';
 import { initNavigation } from './features/navigation.js';
 import { initProfile } from './features/profile.js';
 import { initSuccessStories } from './features/success-stories/success-stories.js';
+import { initContact } from './features/contact/contact.js';
+import { initDemoForm } from './features/demo-form/demo-form.js';
 
 if (config.placeholderKeys.length > 0) {
   console.info(
@@ -17,3 +19,5 @@ initI18n();
 initNavigation();
 initProfile();
 initSuccessStories();
+initContact();
+initDemoForm();

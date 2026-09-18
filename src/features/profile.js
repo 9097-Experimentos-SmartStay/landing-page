@@ -9,8 +9,9 @@
 import { config } from '../config.js';
 import { t, onLanguageChange } from '../i18n/index.js';
 import { storage } from '../lib/storage.js';
+import { PROFILES } from '../domain.js';
 
-export const PROFILES = Object.freeze(['admin', 'guest']);
+export { PROFILES };
 const DEFAULT_PROFILE = 'admin';
 const STORAGE_KEY = 'smartstay.profile';
 const QUERY_PARAM = 'profile';
