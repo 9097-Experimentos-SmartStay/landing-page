@@ -35,7 +35,8 @@ function initMobileMenu() {
       toggle.focus();
     }
   });
-  window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
+  // Same breakpoint as the inline navigation (Tailwind `xl`): from there the menu has nothing left to show.
+  window.matchMedia('(min-width: 80rem)').addEventListener('change', (event) => {
     if (event.matches) setOpen(false);
   });
   onLanguageChange(() => setOpen(!menu.hidden));
