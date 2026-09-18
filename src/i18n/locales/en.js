@@ -121,6 +121,30 @@ export default {
   solutions_item_access: 'Access control',
   solutions_item_analytics: 'Advanced analytics',
 
+  // --- Success stories (US-26) ---
+  stories_title: 'Results you can expect',
+  stories_lead: 'Browse cases by type of property, with data on cost savings, satisfaction and time.',
+  stories_disclaimer:
+    'Illustrative cases: they describe typical properties and their metrics reflect the impact targets of our pilots. We will replace them with real cases, authorised by each hotel, as they are published.',
+  stories_filter_label: 'Filter by type of property',
+  stories_filter_all: 'All',
+  stories_count: 'Showing {count} cases',
+  stories_badge_illustrative: 'Illustrative case',
+  stories_show_details: 'View details',
+  stories_hide_details: 'Hide details',
+  stories_challenge: 'Challenge',
+  stories_solution: 'Solution',
+  stories_metric_cost: 'Operating cost reduction',
+  stories_metric_satisfaction: 'Guest satisfaction improvement',
+  stories_metric_time: 'Time saved',
+  stories_request_info: 'Request more information',
+  stories_request_message: 'I would like more information about the "{title}" case ({location}).',
+  stories_video_title: 'Video testimonials',
+  stories_video_lead: 'Hotel administrators share their experience with SmartStay.',
+  stories_video_placeholder_title: 'Video testimonial coming soon',
+  stories_video_placeholder_desc:
+    "Reserved space for a hotel administrator's testimonial. It will be published once we have an authorised recording.",
+
   // --- Pricing ---
   pricing_eyebrow: 'Pricing',
   pricing_title: 'Plans that fit your hotel',
