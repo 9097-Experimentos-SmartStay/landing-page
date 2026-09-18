@@ -29,6 +29,8 @@
 
 @layer base {
   html {
+    /* Single light theme: native controls and scrollbars never switch to dark. */
+    color-scheme: light;
     scroll-behavior: smooth;
     /* Keeps anchored sections clear of the sticky header. */
     scroll-padding-top: 5rem;

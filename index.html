@@ -9,6 +9,7 @@
       content="SmartStay integra la operación del hotel y la experiencia del huésped con tecnología móvil e IoT."
     />
     <meta name="theme-color" content="#2c3e91" />
+    <meta name="color-scheme" content="light" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -33,7 +34,7 @@
     <!-- ============ HEADER ============ -->
     <header class="sticky top-0 z-50 bg-brand-blue text-white shadow-lg">
       <nav
-        class="container-page flex h-16 items-center justify-between gap-3"
+        class="container-page flex h-16 items-center justify-between gap-3 xl:max-w-7xl"
         aria-label="Principal"
         data-i18n-attr="aria-label:nav_aria_label"
       >
@@ -44,13 +45,13 @@
           SMART STAY
         </a>
 
-        <ul class="hidden items-center gap-1 lg:flex">
-          <li><a href="#profile" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_for_you">Para ti</a></li>
-          <li><a href="#products" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_products">Producto</a></li>
-          <li><a href="#success-stories" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_success">Casos de éxito</a></li>
-          <li><a href="#pricing" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_pricing">Precios</a></li>
-          <li><a href="#about" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_about">Nosotros</a></li>
-          <li><a href="#contact" class="rounded-md px-3 py-2 hover:bg-white/15" data-i18n="nav_contact">Contacto</a></li>
+        <ul class="hidden items-center gap-1 xl:flex">
+          <li><a href="#profile" class="rounded-md px-3 py-2 whitespace-nowrap hover:bg-white/15" data-i18n="nav_for_you">Para ti</a></li>
+          <li><a href="#products" class="rounded-md px-3 py-2 whitespace-nowrap hover:bg-white/15" data-i18n="nav_products">Producto</a></li>
+          <li><a href="#success-stories" class="rounded-md px-3 py-2 whitespace-nowrap hover:bg-white/15" data-i18n="nav_success">Casos de éxito</a></li>
+          <li><a href="#pricing" class="rounded-md px-3 py-2 whitespace-nowrap hover:bg-white/15" data-i18n="nav_pricing">Precios</a></li>
+          <li><a href="#about" class="rounded-md px-3 py-2 whitespace-nowrap hover:bg-white/15" data-i18n="nav_about">Nosotros</a></li>
+          <li><a href="#contact" class="rounded-md px-3 py-2 whitespace-nowrap hover:bg-white/15" data-i18n="nav_contact">Contacto</a></li>
         </ul>
 
         <div class="flex items-center gap-2">
@@ -83,16 +84,16 @@
           </div>
           <a
             href="https://smartstay-movildev-web.vercel.app/login"
-            class="hidden rounded-full px-3 py-2 font-semibold hover:bg-white/15 lg:inline-flex"
+            class="hidden rounded-full px-3 py-2 font-semibold whitespace-nowrap hover:bg-white/15 xl:inline-flex"
             data-app-link="login"
             data-i18n="nav_login"
             >Iniciar sesión</a
           >
-          <a href="#demo" class="btn btn-primary hidden sm:inline-flex" data-i18n="cta_request_demo">Solicitar demo</a>
+          <a href="#demo" class="btn btn-primary hidden whitespace-nowrap sm:inline-flex" data-i18n="cta_request_demo">Solicitar demo</a>
           <button
             type="button"
             id="menu-toggle"
-            class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md hover:bg-white/15 lg:hidden"
+            class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md hover:bg-white/15 xl:hidden"
             aria-controls="mobile-menu"
             aria-expanded="false"
             aria-label="Abrir menú"
@@ -103,7 +104,7 @@
         </div>
       </nav>
 
-      <div id="mobile-menu" class="border-t border-white/15 lg:hidden" hidden>
+      <div id="mobile-menu" class="border-t border-white/15 xl:hidden" hidden>
         <ul class="container-page flex flex-col py-2 text-base">
           <li><a href="#profile" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_for_you">Para ti</a></li>
           <li><a href="#products" class="block rounded-md px-3 py-3 hover:bg-white/15" data-i18n="nav_products">Producto</a></li>
