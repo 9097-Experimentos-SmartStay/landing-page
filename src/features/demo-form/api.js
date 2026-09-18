@@ -3,7 +3,7 @@
  *
  * Contract: 201 `{ id, status: "Received", message }`; 400 ProblemDetails with
  * `errors` keyed by the camelCase field names; rate limited with 429.
- * `fetchImpl` is injectable so the client can be unit tested without a network.
+ * `fetchImpl` is injectable so the client can run without a real network.
  */
 
 export const DEMO_REQUESTS_PATH = '/demo-requests';

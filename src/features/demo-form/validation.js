@@ -1,7 +1,7 @@
 /**
  * US-27 — Demo request: normalisation and client-side validation.
  *
- * Pure functions (no DOM) shared by the form and the unit tests. The rules
+ * Pure functions (no DOM) used by the form. The rules
  * mirror the API contract; the backend validates again and its ProblemDetails
  * errors are mapped back onto the same field names.
  */

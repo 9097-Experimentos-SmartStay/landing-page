@@ -1,5 +1,5 @@
 /**
- * Pure i18n helpers (no DOM access) so they can be unit tested in Node.
+ * Pure i18n helpers (no DOM access) so they can run outside the browser.
  */
 import es from './locales/es.js';
 import en from './locales/en.js';

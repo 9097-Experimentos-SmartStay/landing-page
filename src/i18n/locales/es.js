@@ -1,6 +1,6 @@
 /**
  * Spanish (default). Neutral Spanish with "tú" (no voseo).
- * Every key must also exist in en.js (enforced by tests/unit/i18n.test.js).
+ * Every key must also exist in en.js.
  */
 export default {
   // --- Metadata & accessibility ---
@@ -129,7 +129,7 @@ export default {
     'Casos ilustrativos: describen hoteles tipo y sus métricas reflejan las metas de impacto de nuestros pilotos. Los reemplazaremos por casos reales, con autorización de cada hotel, a medida que se publiquen.',
   stories_filter_label: 'Filtrar por tipo de alojamiento',
   stories_filter_all: 'Todos',
-  stories_count: 'Mostrando {count} casos',
+  stories_count: 'Casos encontrados: {count}',
   stories_badge_illustrative: 'Caso ilustrativo',
   stories_show_details: 'Ver detalles',
   stories_hide_details: 'Ocultar detalles',

@@ -1,7 +1,7 @@
 /**
  * Lucide icons, imported one by one so the bundle only ships what we use.
  * Add the PascalCase export here when a new `data-lucide="kebab-name"` appears
- * (the E2E suite fails on the console warning Lucide prints for unknown icons).
+ * (Lucide prints a console warning for unknown icons).
  */
 import {
   createIcons,

@@ -1,5 +1,5 @@
 /**
- * English. Every key must also exist in es.js (enforced by tests/unit/i18n.test.js).
+ * English. Every key must also exist in es.js.
  */
 export default {
   // --- Metadata & accessibility ---
@@ -128,7 +128,7 @@ export default {
     'Illustrative cases: they describe typical properties and their metrics reflect the impact targets of our pilots. We will replace them with real cases, authorised by each hotel, as they are published.',
   stories_filter_label: 'Filter by type of property',
   stories_filter_all: 'All',
-  stories_count: 'Showing {count} cases',
+  stories_count: 'Cases found: {count}',
   stories_badge_illustrative: 'Illustrative case',
   stories_show_details: 'View details',
   stories_hide_details: 'Hide details',

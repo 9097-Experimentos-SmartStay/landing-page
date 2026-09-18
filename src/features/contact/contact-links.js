@@ -1,6 +1,6 @@
 /**
  * US-27 — Builders for the direct sales channels and the scheduling link.
- * Pure functions so they can be unit tested.
+ * Pure functions with no DOM access.
  */
 
 /** `https://wa.me/<digits>?text=...` — wa.me requires the number without "+" or separators. */
